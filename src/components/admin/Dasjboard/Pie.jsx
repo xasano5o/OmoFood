@@ -1,29 +1,32 @@
 import { ResponsivePie } from "@nivo/pie";
+import { useGetStatsQuery } from "../../../redux/slice/client/stats/Stats";
 
 const Pie = ({ mockdata }) => {
+  const { data, isLoading } = useGetStatsQuery();
+
   let pie_data = [
     {
-      id: "Bajarilgan",
-      label: "Bajarilgan",
-      value: 10,
+      id: "Bekor Qilindi",
+      label: "Bekor Qilindi",
+      value:data?.bekor_qilindi?.count ?? 0 ,
       color: "lime",
     },
     {
-      id: "Jarayonda",
-      label: "Jarayonda",
-      value: 10,
+      id: "Qabul qildindi",
+      label: "Qabul qildindi",
+      value:data?.qabul_qilindi?.count ?? 0,
       color: "yellow",
     },
     {
-      id: "Bajarilmagan",
-      label: "Bajarilmagan",
-      value: 10,
+      id: "Yetkazilmoqda",
+      label: "Yetkazilmoqda",
+      value:data?.yetkazilmoqda?.count ?? 0,
       color: "red",
     },
     {
-      id: "Bekor qilingan",
-      label: "Bekor qilingan",
-      value: 10,
+      id: "Yetkazildi",
+      label: "Yetkazildi",
+      value: data?.yetkazildi?.count ?? 0,
       color: "#bbb",
     },
   ];
@@ -31,7 +34,7 @@ const Pie = ({ mockdata }) => {
   return (
     <ResponsivePie
       data={pie_data}
-      valueFormat={(v) => `${v} %`}
+      valueFormat={(v) => `${v} ta`}
       colors={(d) => d.data.color}
       margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
       innerRadius={0.5}

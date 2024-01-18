@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3430e1dc.css",
+    "main.js": "/static/js/main.69a2873a.js",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/all_done.jpg": "/static/media/all_done.f28919c193904538bfa8.jpg",
+    "static/media/a_lot_left.jpg": "/static/media/a_lot_left.74c190fff0d38fcf8664.jpg",
+    "static/media/almost_done.jpg": "/static/media/almost_done.11bf8b3a4c8ac6d38ca2.jpg",
+    "static/media/still_got_some.jpg": "/static/media/still_got_some.8689a0d8a086eb903185.jpg",
+    "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/task.png": "/static/media/task.2da52982dfb377fe3df7.png",
+    "static/media/time.png": "/static/media/time.f30293d90e2e23717cca.png",
+    "static/media/cancel.png": "/static/media/cancel.193593e8a806a3dbfd14.png",
+    "static/media/warning.png": "/static/media/warning.4630227019604c9bdb93.png",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/done.png": "/static/media/done.95c2fec3fb050bfb7a65.png",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.3430e1dc.css.map": "/static/css/main.3430e1dc.css.map",
+    "main.69a2873a.js.map": "/static/js/main.69a2873a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3430e1dc.css",
+    "static/js/main.69a2873a.js"
+  ]
+}

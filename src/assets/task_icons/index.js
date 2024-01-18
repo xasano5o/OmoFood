@@ -3,5 +3,6 @@ import Finished from "./done.png";
 import Doing from "./time.png";
 import Missed from "./warning.png";
 import Cancelled from "./cancel.png";
-
-export { Cancelled, Doing, Finished, Missed, Tasks };
+import yekazildi from "./yetkazildi.jpg"
+import yekazilmoqda from "./yetkazilmoqda.jpg"
+export { Cancelled, Doing, Finished, Missed, yekazilmoqda,yekazildi };
