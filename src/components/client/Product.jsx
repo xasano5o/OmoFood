@@ -158,7 +158,7 @@ function Product() {
                       showStatus={false}
                       infiniteLoop={true}
                     >
-                      <div className="h-[450px]">
+                      <div className="">
                         <img
                           src={product?.image}
                           alt={product?.title}
@@ -181,16 +181,22 @@ function Product() {
                 </div>
 
                 <div className="col-md-6">
-                  <div className="w-full border p-4 shadow-md h-[600px]">
+                  <div className="w-full border p-4 shadow-md ">
                     <div className="mt-4 mb-3">
                       <h5 className="text-uppercase">{product?.title}</h5>
                       <span className="text-capitalize text-orange-600">
                         {product?.category?.title}
                       </span>
                       <div className="price d-flex flex-row align-items-center">
-                        <big className="display-6">
-                          <b>{product?.price.toLocaleString("ru-Ru")}</b>so'm
-                        </big>
+                      {product?.discount?.product_discount_price ? (
+                          <div className="f">
+                            <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
+                            <br />
+                            <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
+                          </div>
+                        ) : (
+                          <big className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</big>
+                        )}
                       </div>
                       <div className="price d-flex flex-row align-items-center">
                         <big className="display-6">

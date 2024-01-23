@@ -30,9 +30,7 @@ export const GetUserToekn = createApi({
 });
 
 export const {
-
     useTokenUserMutation,
     useTokenChecUserMutation,
     useGetUserTokenQuery,
-
 } = GetUserToekn;

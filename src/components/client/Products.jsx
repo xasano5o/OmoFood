@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   useCreateBasketMutation,
   useDeleteBasketMutation,
   useGetProductQuery,
   useIncrementMutation,
 } from "../../redux/slice/client/basket/index.js";
-import { toast } from "react-toastify";
-import { FaCartPlus } from "react-icons/fa";
-import Countdown from "react-countdown";
-import axios from "axios";
+import Sidekatalg from "./Sidekatalg.jsx";
 
 
 
@@ -22,10 +21,11 @@ function DiscountCom() {
 
   const token = localStorage.getItem("user");
   if (token) {
-    axios.post("users/check_token/", {
+    axios.post("users/check_token/", {}, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`,
-      },})
+      },
+    })
 
   } else {
     axios.get("users/get_token/").then((res) => {
@@ -103,7 +103,10 @@ function DiscountCom() {
   const ShowProducts = () => (
     <>
       <h3>Maxsulotlar</h3>
-      <div className="col-md-13 py-md-3">
+      <div className="flex col-md-13 py-md-3">
+      {/* <div className="">
+            <Sidekatalg/>
+          </div> */}
         <div className="row">
           {products?.map((product) => {
             const discountTimeLeft = parseFloat(product?.discount?.time_left);
@@ -112,28 +115,31 @@ function DiscountCom() {
             // Convert seconds to milliseconds
             const diffTime = backend_seconds * 1000;
 
-            const days = Math.floor(diffTime / (24 * 60 * 60 * 1000));
-            const hours = Math.floor((diffTime % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-            const minutes = Math.floor((diffTime % (60 * 60 * 1000)) / (60 * 1000));
-            const secs = Math.floor((diffTime % (60 * 1000)) / 1000);
+            const days = Math?.floor(diffTime / (24 * 60 * 60 * 1000));
+            const hours = Math?.floor((diffTime % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const minutes = Math?.floor((diffTime % (60 * 60 * 1000)) / (60 * 1000));
+            const secs = Math?.floor((diffTime % (60 * 1000)) / 1000);
 
 
             return (
-              <div className="col-6 col-md-3 col-lg-3 mb-1" key={product?.id}>
-                <div className="card h-100">
-                  <NavLink to={`/product/${product?.id}`}>
-                    <img src={product?.image} className="aspect-square object-cover w-full h-[300px]" alt={product?.title} />
-                  </NavLink>
-
-                  <div className="m-3 mb-0 flex justify-between items-center">
-                    <small className="card-title">{product?.title}</small>
-                    {/* {discountTimeLeft !== undefined && discountTimeLeft > 0 && <Countdown date={Date.now() + diffTime} />} */}
-                  </div>
-
-                  <div style={{ marginTop: "auto" }}>
-                    <div className="d-flex justify-content-between align-items-center">
-                    <div className="m-3">
-                        {product?.discount?.product_discount_price ? (
+              <div className="col-6 col-md-3 col-lg-3 mb-3" >
+                <div className="h-100">
+                  <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl h-[450px]" key={product?.id}>
+                    <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl">
+                      <NavLink to={`/product/${product?.id}`}>
+                        <img
+                          src={product?.image}
+                          alt={product?.title} class="object-contain w-full h-[300px]" />
+                      </NavLink>
+                    </div>
+                    <div class="p-6">
+                      <div class="flex items-center justify-between mb-2">
+                        <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                          {product?.title}
+                        </p>
+                     
+                      </div>
+                      {product?.discount?.product_discount_price ? (
                           <div className="f">
                             <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
                             <br />
@@ -142,46 +148,38 @@ function DiscountCom() {
                         ) : (
                           <b className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</b>
                         )}
+                    </div>
+                    <div class="p-6 pt-0">
+                      {product?.basket?.amount ? (
+                        <div className="flex py-4 justify-around items-center border-gray-100">
+                          <span
+                            disabled={disl && true}
+                            onClick={() => decrement(product?.basket)}
+                            className="cursor-pointer rounded-l bg-blue-700 text-white py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                          >
+                            {" "}
+                            -{" "}
+                          </span>
+                          <input className="h-8 w-8 border text-center text-xs outline-none" type="text" value={product?.basket?.amount} min="1" />
+                          <span
+                            disabled={disl && true}
+                            onClick={() => updateBasket(product?.basket, product?.basket?.amount + 1)}
+                            className="cursor-pointer rounded-r bg-blue-700 text-white py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                          >
+                            {" "}
+                            +{" "}
+                          </span>
                         </div>
-                      <NavLink to={`/product/${product?.id}`}>
-                        <button className="btn btn-sm m-3 border-primary">
-                          <span className="fa fa-arrow-right text-muted" />
+                      ) : (
+                        <button
+                          onClick={() => addData(product)}
+                          class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+                        >
+                          Savatga qo'shish
                         </button>
-                      </NavLink>
+                      )}
                     </div>
                   </div>
-
-                  {product?.basket?.amount ? (
-                    <div className="flex py-4 justify-around items-center border-gray-100">
-                      <span
-                        disabled={disl && true}
-                        onClick={() => decrement(product?.basket)}
-                        className="cursor-pointer rounded-l bg-blue-700 text-white py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                      >
-                        {" "}
-                        -{" "}
-                      </span>
-                      <input className="h-8 w-8 border text-center text-xs outline-none" type="text" value={product?.basket?.amount} min="1" />
-                      <span
-                        disabled={disl && true}
-                        onClick={() => updateBasket(product?.basket, product?.basket?.amount + 1)}
-                        className="cursor-pointer rounded-r bg-blue-700 text-white py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                      >
-                        {" "}
-                        +{" "}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className=" text-center items-center justify-center flex mb-2">
-                      <button
-              useGetNoteQuery          disabled={disabled && true}
-                        onClick={() => addData(product)}
-                        className="bg-blue-700 flex gap-2 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-                      >
-                        <FaCartPlus className=" cursor-pointer text-2xl" />
-                      </button>
-                    </div>
-                  )}
                 </div>
               </div>
             );

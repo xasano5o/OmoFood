@@ -51,6 +51,9 @@ const OrderCrud = () => {
                     <th scope="col" className="p-4">
                       Xarid narxi
                     </th>
+                    <th scope="col" className="p-4">
+                      Yetkazilganligi haqida
+                    </th>
                     {/* <th scope="col" className="p-4">
                       To'lov turi
                     </th>
@@ -112,6 +115,13 @@ const OrderCrud = () => {
                               className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
                             >
                               {item?.total_price} So'm
+                            </span>
+                          </td>
+                          <td className="px-4 py-3">
+                            <span
+                              className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                            >
+                              {item?.delivery_status} 
                             </span>
                           </td>
                           {/* <td className="px-4 py-3">

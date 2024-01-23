@@ -63,7 +63,7 @@ const CategoryId = () => {
 
   const token = localStorage.getItem("user");
   if (token) {
-    axios.post("users/check_token/", {
+    axios.post("users/check_token/",{}, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`,
       },

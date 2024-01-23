@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useGetSearchQuery } from "../../redux/slice/client/search";
 import { useGetBasketQuery } from "../../redux/slice/client/basket";
 import axios from "axios";
+import Sidekatalg, { SidebarWithBurgerMenu } from "./Sidekatalg";
 const Navbar = () => {
   const [skip, setSkip] = useState(false);
   const [search, setSearch] = useState("");
@@ -51,16 +52,16 @@ const Navbar = () => {
   return (
     <div className="bot">
       <nav className="navbar bg-light fixed-top shadow">
+        
         <div className="container-fluid container grid grid-cols-3 ">
-          <div className="logo flex gap-3 items-center">
+      
+         <div className="logo flex gap-3 items-center">
             <NavLink className="no-underline text-blue-500" to="/">
-              {/* <img src="/FakeShop.png" alt="logo" style={{ height: "50px" }} /> */}
               <h1 className="no-underline text-blue-500">
                 Omo<b className="text-yellow-600">Food</b>
               </h1>
             </NavLink>
           </div>
-
           <div>
             <div className="">
               <form onSubmit={handleSubmit}>
@@ -146,9 +147,9 @@ const Navbar = () => {
                       </div>
                     );
                   })}
-                  {data?.result?.products?.map((value,index) => {
+                  {data?.result?.products?.map((value, index) => {
                     return (
-                      <div key={index+1}>
+                      <div key={index + 1}>
                         <NavLink
                           className="no-underline"
                           to={`/product/${value?.id}`}
@@ -215,6 +216,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
+        
           <div className="basket">
             <Link
               to={"/basket"}
@@ -226,6 +228,7 @@ const Navbar = () => {
               </button>
             </Link>
           </div>
+        
         </div>
       </nav>
     </div>
