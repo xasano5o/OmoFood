@@ -35,20 +35,21 @@ const AddProduct = ({object}) => {
     formData.append('amount', inputValue.amount);
     formData.append('amount_measure', inputValue.amount_measure);
     formData.append('category', inputValue?.category);
-    if (inputValue.subcategory){
+
+    if (inputValue?.subcategory){
       formData.append('subcategory', inputValue?.subcategory);
     }
 
     try {
       await createProduct(formData).unwrap();
-      toast.success(`Category ${inputValue.title} added successfully`);
+      toast.success(`Category ${inputValue?.title} added successfully`);
       setInputValue({
         title: '',
         img: '',
       });
       setOpen(false);
     } catch (error) {
-      toast.error(`Failed to add category ${inputValue.title}`);
+      toast.error(`Failed to add category ${inputValue?.title}`);
     }
   };
 
@@ -107,6 +108,7 @@ const AddProduct = ({object}) => {
                    <option value="dona">dona</option>
                    <option value="litr">litr</option>
                    <option value="metr">metr</option>
+                   <option value="gramm">gramm</option>
 
 
                 </select>
@@ -116,10 +118,11 @@ const AddProduct = ({object}) => {
                 <textarea
                   id="message"
                   rows="4"
+                  maxLength={125}
+                  minLength={1}
                   onChange={(e) => setInputValue({ ...inputValue, description: e.target.value })}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder=""
-                  required
+                    required
                 ></textarea>
               </div>
 
