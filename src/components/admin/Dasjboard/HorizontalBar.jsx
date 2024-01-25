@@ -1,39 +1,32 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { useEffect, useState } from "react";
+import { useGetStatsQuery } from "../../../redux/slice/client/stats/Stats";
 
 
 
-const Bar = ({ data }) => {
+const Bar = () => {
+  const { data, isLoading } = useGetStatsQuery();
+
   let bar_data = [
-  {
-    sector: "Sotuv",
-    Bajarilgan: 18,
-    BajarilganColor: "lime",
-    Jarayonda: 8,
-    JarayondaColor: "yellow",
-    Bajarilmagan: 5,
-    BajarilmaganColor: "red",
-    "Bekor qilingan": 4,
-    "Bekor qilinganColor": "#bbb",
-  },
-  {
-    sector: "Marketing",
-    Bajarilgan: 45,
-    BajarilganColor: "lime",
-    Jarayonda: 23,
-    JarayondaColor: "yellow",
-    Bajarilmagan: 6,
-    BajarilmaganColor: "red",
-    "Bekor qilingan": 10,
-    "Bekor qilinganColor": "#bbb",
-  },
-];
+    {
+      sector: "Sotuv",
+      "Bekor qilindi": data?.bekor_qilindi?.count ?? 0,
+      "Bekor qilindiColor": "#f00",
+      'Qabul qilindi': data?.qabul_qilindi?.count ?? 0,
+      'Qabul qilindiColor': "#0f0",
+      Yetkazilmoqda: data?.yetkazilmoqda?.count ?? 0  ,
+      YetkazilmoqdaColor: "#ff0",
+      Yetkazildi: data?.yetkazildi?.count ?? 0,
+      YetkazildiColor: "#0ff",
+    },
+
+  ];
 
   return (
     <ResponsiveBar
       data={bar_data}
       valueFormat={(v) => `${v} ta`}
-      keys={["Bajarilgan", "Jarayonda", "Bajarilmagan", "Bekor qilingan"]}
+      keys={["Yetkazildi", "Yetkazilmoqda", "Qabul qilindi", "Bekor qilindi"]}
       indexBy="sector"
       colors={({ id, data }) => data[`${id}Color`]}
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}

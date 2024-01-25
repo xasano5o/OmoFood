@@ -5,7 +5,7 @@ import HorizontalBar from "./HorizontalBar";
 import Pie from "./Pie";
 import Stats from "./Stats";
 
-const mockdata =[
+const mockdata = [
   {
     "id": "make",
     "label": "make",
@@ -42,8 +42,8 @@ const Dasjboard = () => {
   const [sectorsData, setSectorsData] = useState(null);
 
   return (
-<div>
-<     Stats
+    <div>
+      <Stats
         all={mockdata?.all_tasks}
         finished={mockdata?.finished}
         doing={mockdata?.doing}

@@ -61,7 +61,22 @@ const CategoryId = () => {
   const [createBasket, { isLoading: disabled, isSuccess }] =
     useCreateBasketMutation();
 
-
+  const token = localStorage.getItem("user");
+  if (token) {
+    axios.post("users/check_token/",{}, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("user")}`,
+      },
+    });
+  } else {
+    axios.get("users/get_token/").then((res) => {
+      const token = res.data?.access_token;
+      localStorage.setItem("user", token);
+    });
+    setTimeout(() => {
+      // window.location.reload();
+    }, 1500);
+  }
 
   useEffect(() => {
     setFilter(products);
