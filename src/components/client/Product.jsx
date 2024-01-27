@@ -8,9 +8,7 @@ import { toast } from "react-toastify";
 import { useCreateBasketMutation, useDeleteBasketMutation, useIncrementMutation } from "../../redux/slice/client/basket/index.js";
 import { useGetProductIdQuery } from "../../redux/slice/client/getProduct/index.js";
 import { CategorySlide } from "./CategorySilide.jsx";
-import axios from "axios";
 import { FaCartPlus } from "react-icons/fa";
-// import { useGetProductQuery } from "../../redux/slice/client/getProduct/index.js";
 
 function Product() {
   const [deleteBasket] = useDeleteBasketMutation();
@@ -18,7 +16,7 @@ function Product() {
   const { id } = useParams();
 
   const { data: product, isLoading, refetch } = useGetProductIdQuery({ id: id });
-  const [createBasket, { isLoading: createIsloading, isSuccess }] =
+  const [createBasket, { isLoading: createIsloading }] =
     useCreateBasketMutation();
 
 

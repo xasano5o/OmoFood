@@ -9,7 +9,6 @@ import {
   useGetProductQuery,
   useIncrementMutation,
 } from "../../redux/slice/client/basket/index.js";
-import Sidekatalg from "./Sidekatalg.jsx";
 
 
 
@@ -17,14 +16,20 @@ function DiscountCom() {
   const { data: products, isLoading } = useGetProductQuery();
   const [deleteBasket] = useDeleteBasketMutation();
   const [increment, { isLoading: disl }] = useIncrementMutation();
-  const [createBasket, { isLoading: disabled }] = useCreateBasketMutation();
+  const [createBasket] = useCreateBasketMutation();
   const token = localStorage.getItem("user");
   if (token) {
-    axios.post("users/check_token/", {}, {
+    fetch('https://api.omofoods.uz/api/v1/users/check_token/', {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`,
-      },
-    })
+      }
+    }
+    ).then((res) => {
+   if (res.status===401) {
+      localStorage.removeItem('user')
+   }
+   })
 
   } else {
     axios.get("users/get_token/").then((res) => {
@@ -103,7 +108,7 @@ function DiscountCom() {
     <>
       <h3>Maxsulotlar</h3>
       <div className="flex col-md-13 py-md-3">
-      {/* <div className="">
+        {/* <div className="">
             <Sidekatalg/>
           </div> */}
         <div className="row">
@@ -136,17 +141,17 @@ function DiscountCom() {
                         <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
                           {product?.title}
                         </p>
-                     
+
                       </div>
                       {product?.discount?.product_discount_price ? (
-                          <div className="f">
-                            <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
-                            <br />
-                            <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
-                          </div>
-                        ) : (
-                          <b className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</b>
-                        )}
+                        <div className="f">
+                          <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
+                          <br />
+                          <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
+                        </div>
+                      ) : (
+                        <b className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</b>
+                      )}
                     </div>
                     <div class="p-6 pt-0">
                       {product?.basket?.amount ? (
