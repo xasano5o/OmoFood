@@ -15,7 +15,6 @@ const Basket = () => {
   const [Increment] = useIncrementMutation();
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [isAllSelected, setIsAllSelected] = useState(false);
-  const [skip, setSkip] = useState(false)
   const [user, setUser] = useState()
   const [selectTotal, setSelectTotal] = useState(1);
   const [totalAmount, settotalAmount] = useState(0);
@@ -40,8 +39,6 @@ const Basket = () => {
   };
   useEffect(() => {
     if (isAllSelected !== undefined) {
-
-
       axios.get(`basket/change_all_status/?status=${isAllSelected}`, { headers })
         .then(() => {
           refetchData();
@@ -53,14 +50,6 @@ const Basket = () => {
     }
   }, [isAllSelected]);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     refetchUser()
-  //     setTimeout(() => {
-  //       refetchData()
-  //     }, 500)
-  //   }
-  // }, [user]);
   const handleSelectAmount = async (e, value) => {
     const newAmount = e?.target?.value;
     setSelectTotal(newAmount);
@@ -126,7 +115,10 @@ const Basket = () => {
 
   const handleUserSelect = (user) => {
     if (user) {
-      axios.put(`basket/${user?.id}/change_status/`, { headers })
+      axios.get(`basket/${user?.id}/change_status/`, { headers })
+        .then(() => {
+          refetchData();
+        })
     }
 
     if (selectedUsers?.includes(user?.id)) {
@@ -151,12 +143,9 @@ const Basket = () => {
   };
 
   return (
-    <div className=" pt-12">
+    <div className="pt-12">
       <div className="container mx-auto">
-
-
         <section className="items-center py-24 bg-gray-50 font-poppins">
-
           <div className="justify-center flex-1 px-4 py-6 mx-auto max-w-7xl lg:py-4 lg:px-6">
             <div className="mx-auto max-full flex items-center gap-2">
               <input
@@ -171,7 +160,7 @@ const Basket = () => {
             <h2 className="mb-10 text-4xl font-bold text-center text-gray-800">    Savatga olingan maxsulotlar soni: {dataBasket?.items?.length}</h2>
             {dataBasket?.items?.map((value) => (
               <div className="mb-10 lg:px-0" key={value?.id}>
-                <div className="relative flex flex-wrap items-center pb-8 mb-8 -mx-1 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
+                <div className="relative flex flex-wrap items-center -mx-1 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
                   <div key={value?.id} className="flex items-center">
                     <input
                       className=""

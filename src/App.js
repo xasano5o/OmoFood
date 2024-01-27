@@ -1,24 +1,22 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import NotFound from './NotFound.jsx';
+import Dasjboard from './components/admin/Dasjboard/Dasjboard.jsx';
 import Layout from './components/admin/Layout/index.jsx';
 import Login from './components/admin/auth/sigin.jsx';
 import Banners from './components/admin/banner/Banners.jsx';
 import CategoriesCrud from './components/admin/categoriesCrud/Table.jsx';
 import Deliveries from './components/admin/deliveries/Table.jsx';
 import DiscountTbale from './components/admin/discountCrud/Table.jsx';
+import NoteTable from './components/admin/note/NoteTable.jsx';
 import OrderCrud from './components/admin/order/Orders.jsx';
 import { default as ProductCrud, default as ProductTable } from './components/admin/productCrud/Table.jsx';
 import SubcategorieCom from './components/admin/subCategoriya/TableSub.jsx';
-import BaskerPage from './pages/client/basket/index.jsx';
+import Basket from './components/client/Basket.jsx';
+import NavbarMobile from './components/client/NavbarMobile.jsx';
 import CategoryIdPage from './pages/client/categorieid/index.jsx';
 import HomePage from './pages/client/home/index.jsx';
 import ProductPage from './pages/client/product/index.jsx';
-import Dasjboard from './components/admin/Dasjboard/Dasjboard.jsx';
-import NoteTable from './components/admin/note/NoteTable.jsx';
-import NavbarMobile from './components/client/NavbarMobile.jsx';
-import Basket from './components/client/Basket.jsx';
 
 function App() {
   const location = useLocation();
