@@ -171,14 +171,23 @@ const AddProduct = ({ object }) => {
                     borderBottom: '1px solid black',
                   }} value="">Hech biri</option>
 
-                  {data?.map((value) => (
-                    <option 
-                    
-                    className='p-1'
-                    style={{
-                      borderBottom: '1px solid black',
-                    }} key={value?.id} disabled={direction == 'ALL'} value={value.id}>{value.title}</option>
-                  ))}
+                  {data?.map((value) => {
+                    console.log(value, "dw");
+                    return (
+                      <option
+                        className='p-1'
+                        style={{
+                          borderBottom: '1px solid black',
+                        }}
+                        key={value?.id}
+                        disabled={direction === 'ALL'}
+                        value={value?.id}
+                      >
+                        {value?.title}
+                      </option>
+                    );
+                  })}
+
                 </select>
               </div>
 
@@ -191,9 +200,9 @@ const AddProduct = ({ object }) => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   onChange={(e) => handleSelectionChange('subcategory', e)}
                 >
-                  <option    className='p-1'    style={{
-                      borderBottom: '1px solid black',
-                    }}  value="">Hech biri</option>
+                  <option className='p-1' style={{
+                    borderBottom: '1px solid black',
+                  }} value="">Hech biri</option>
 
                   {subData?.map((value) => (
                     <option key={value.id} disabled={direction == 'ALL'} value={value.id}>{value.title}</option>

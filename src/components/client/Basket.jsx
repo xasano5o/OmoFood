@@ -7,6 +7,7 @@ import {
 } from "../../redux/slice/client/basket";
 import BasketCheckout from "./BasktChecout";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Basket = () => {
   const { data: dataBasket, isSuccess, refetch: refetchData } = useGetBasketQuery();
@@ -150,130 +151,89 @@ const Basket = () => {
   };
 
   return (
-    <div className="bg-gray-100 pt-12 h-screen">
+    <div className=" pt-12">
       <div className="container mx-auto">
-        <h1 className="text-xl">
-          Savatga olingan maxsulotlar soni: {dataBasket?.items?.length}
-        </h1>
-        <div className="mx-auto max-w-7xl flex items-center gap-2">
-          <input
-            id="selectAll"
-            name="selectAll"
-            type="checkbox"
-            checked={isAllSelected}
-            onChange={selectAll}
-          />
-          <label htmlFor="selectAll">Hammasini tanlash</label>
-        </div>
-        <div className="mx-auto max-w-7xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-          <div className="rounded-lg md:w-2/3 p-4 flex flex-col gap-2 h-[70vh] overflow-x-auto">
+
+
+        <section className="items-center py-24 bg-gray-50 font-poppins">
+
+          <div className="justify-center flex-1 px-4 py-6 mx-auto max-w-7xl lg:py-4 lg:px-6">
+            <div className="mx-auto max-full flex items-center gap-2">
+              <input
+                id="selectAll"
+                name="selectAll"
+                type="checkbox"
+                checked={isAllSelected}
+                onChange={selectAll}
+              />
+              <label htmlFor="selectAll">Hammasini tanlash</label>
+            </div>
+            <h2 className="mb-10 text-4xl font-bold text-center text-gray-800">    Savatga olingan maxsulotlar soni: {dataBasket?.items?.length}</h2>
             {dataBasket?.items?.map((value) => (
-              <div
-                key={value?.id}
-                className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
-              >
-                <div key={value?.id} className="flex items-center">
-                  <input
-                    className=""
-                    type="checkbox"
-                    checked={isUserSelected(value)}
-                    onChange={() => handleUserSelect(value)}
-                  />
-                </div>
-                <div className="flex justify-end mb-2 xl:mb-0 lg:mb-0 md:mb-0 -mt-3 md:-mt-0 xl:-mt-0 lg:-mt-0 sm:block md:hidden sm:items-center lg:hidden xl:hidden">
-                  <svg
-                    onClick={() => deleteFunc(value?.id)}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
+              <div className="mb-10 lg:px-0" key={value?.id}>
+                <div className="relative flex flex-wrap items-center pb-8 mb-8 -mx-1 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
+                  <div key={value?.id} className="flex items-center">
+                    <input
+                      className=""
+                      type="checkbox"
+                      checked={isUserSelected(value)}
+                      onChange={() => handleUserSelect(value)}
                     />
-                  </svg>
-                </div>
-                <img
-                  src={value?.product?.image}
-                  alt="product-image"
-                  className="w-full rounded-lg md:ml-7 lg:ml-7 xl:ml-7 sm:w-40 object-contain"
-                />
-                <div className="sm:ml-4 sm:flex md:flex-nowrap sm:w-full sm:justify-between p-3">
-                  <div className="mt-5 sm:mt-0 ">
-                    <h2 className="text-lg font-bold text-gray-900">
+                  </div>
+                  <div className="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">
+                    <img src={value?.product?.image} alt="" className="object-contain w-full h-full" />
+                  </div>
+                  <div className="w-full px-4 mb-6 md:w-96 xl:mb-0">
+                    <h1 className="block text-xl font-medium  text-gray-800" >
                       {value?.product?.title}
-                    </h2>
+                    </h1>
                     <p className="mt-1 text-base text-gray-700">
                       {value.product?.description?.length > 100
                         ? `${value?.product?.description.substring(0, 70)}...`
                         : value?.product?.description}
                     </p>
+                    <div className="flex flex-wrap">
+                      {value?.product?.discount?.value ? (
+                        <div className="flex justify-center">
+                          <ImFire className="text-red-700" />
+                          <p className="text-base text-gray-700">{value.product.discount.value}%</p>
+                        </div>
+                      ) : null}
+                      <p className="text-sm font-medium text-gray-800">
+                        <span>Hajmi:</span>
+                        <span className="ml-2 text-gray-800">{value?.product?.amount} {value?.product?.amount_measure}</span>
+                      </p>
+                    </div>
                   </div>
-                  {value?.product?.discount?.value ? (
-                    <div className="flex justify-center">
-                      <ImFire />
-                      <p className="text-base text-gray-700">{value.product.discount.value}%</p>
-                    </div>
-                  ) : null}
+                  <div className="w-full px-4 mt-6 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
+                    <div className="flex items-center">
+                      <div className="inline-flex items-center px-4 font-semibold text-gray-800 border border-gray-300 rounded-md">
+                        <button onClick={() => decrement(value)} className="py-2 pr-2 border-r border-gray-300 text-gray-800">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-dash" viewBox="0 0 16 16">
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
+                          </svg>
+                        </button>
+                        <input type="number" className="w-16 px-2 py-4 text-center border-0 rounded-md bg-gray-50 text-gray-800" placeholder="1" value={value?.amount} />
+                        <button onClick={() => increment(value)} className="py-2 pl-2 border-l border-gray-300 text-gray-800 w-8">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                          </svg>
+                        </button>
 
-                  <div className="flex justify-between flex-wrap md:flex-nowrap lg:flex-nowrap xl:flex-nowrap im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-                    <div className="hidden lg:block xl:block md:block">
-                      <div className="flex justify-end">
-                        <svg
-                          onClick={() => deleteFunc(value?.id)}
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
+                        <select className="flex justify-center py-2 pl-2 border-l border-gray-300 text-gray-800" onChange={(e) => handleSelectAmount(e, value)}>
+                          <option className="flex justify-center" value="1">1</option>
+                          <option className="flex justify-center" value="10">10</option>
+                          <option className="flex justify-center" value="20">20</option>
+                          <option className="flex justify-center" value="30">30</option>
+                          <option className="flex justify-center" value="40">40</option>
+                          <option className="flex justify-center" value="50">50</option>
+                          <option value="100">100</option>
+                        </select>
                       </div>
                     </div>
-                    <div className="flex gap-4">
-                      <div className="flex items-center border-gray-100">
-                        <span
-                          onClick={() => decrement(value)}
-                          className="cursor-pointer rounded-l bg-blue-500  text-white py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                        >
-                          {" "}
-                          -{" "}
-                        </span>
-                        <input
-                          className="h-8 w-8 border bg-white text-center text-xs outline-none"
-                          type="text"
-                          value={value?.amount}
-                          min="1"
-                        />
-                        <span
-                          onClick={() => increment(value)}
-                          className="cursor-pointer rounded-r bg-blue-500  text-white py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                        >
-                          {" "}
-                          +{" "}
-                        </span>
-                      </div>
-                      <select className="flex justify-center" onChange={(e) => handleSelectAmount(e, value)}>
-                        <option className="flex justify-center" value="1">1</option>
-                        <option className="flex justify-center" value="10">10</option>
-                        <option className="flex justify-center" value="20">20</option>
-                        <option className="flex justify-center" value="30">30</option>
-                        <option className="flex justify-center" value="40">40</option>
-                        <option className="flex justify-center" value="50">50</option>
-                        <option value="100">100</option>
-                      </select>
-                    </div>
-                    <div className="flex items-center flex-col justify-between">
+                  </div>
+                  <div className="w-full px-4 xl:w-auto">
+                    <span className="text-xl font-medium text-blue-500 dark:text-blue-400 ">
                       {value?.product?.discount?.product_discount_price?.toLocaleString ? (
                         <p className="text-sm">
                           {value?.product?.discount?.product_discount_price?.toLocaleString(
@@ -297,42 +257,43 @@ const Basket = () => {
                       ) : <p>
                         {value?.product?.price?.toLocaleString("uz-UZ")} so'm
                       </p>}
-                    </div>
+                    </span>
                   </div>
+                  <button onClick={() => deleteFunc(value?.id)} className="absolute top-0 right-0 text-gray-800 lg:mt-6 lg:-mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-6 h-6 bi bi-x-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                    </svg>
+                  </button>
                 </div>
               </div>
             ))}
-            {/* mobile */}
-            <div className="mt-6 h-fit rounded-lg border md:hidden xl:hidden lg:hidden bg-white p-6 shadow-md md:mt-6 md:w-1/3">
-              <div className="flex justify-between">
-                <p className="text-lg font-bold">Umumiy xaridlar narxi: </p>
-                <div className="">
-                  <p className="mb-1 text-lg font-bold">
-                    {dataBasket?.total_price?.price}
-                  </p>
-                  <p className="text-sm text-gray-700">including VAT</p>
+
+            <div className="flex flex-wrap justify-between">
+
+              <div className="w-full lg:w-1/3">
+                <div>
+                  <h2 className="mb-6 text-3xl font-bold text-gray-800">Cart totals</h2>
+                  <div className="flex flex-wrap items-center justify-between px-10 py-4 w-[30rem] mb-3 font-medium leading-8 bg-gray-100 bg-opacity-50 border text-white dark:bg-gray-800 dark:border-gray-800 rounded-xl">
+                    <span>Mahsulotning umimiy narxi</span>
+                    <span className="flex items-center text-xl flex-wrap ">
+                      <p className="mb-1 text-lg font-bold">
+                        {dataBasket?.total_price?.discount_price?.toLocaleString("uz-UZ")} so'm
+                      </p>
+                      <div className="w-4"></div>
+                      <del>
+                        {dataBasket?.total_price.price?.toLocaleString("uz-UZ")} so'm
+                      </del>
+                    </span>
+                  </div>
+                  <BasketCheckout />
+
                 </div>
               </div>
-              <BasketCheckout />
             </div>
           </div>
-          {/* desktop */}
-          <div className="hidden mt-6 h-fit rounded-lg border md:block lg:block xl:block bg-white p-6 shadow-md md:mt-6 md:w-1/3">
-            <div className="flex justify-between">
-              <p className="text-lg font-bold">Umumiy xaridlar narxi: </p>
-              <div className="">
-                <p className="mb-1 text-lg font-bold">
-                  {dataBasket?.total_price?.discount_price?.toLocaleString("uz-UZ")} so'm
-                </p>
-                <del>
-                  {dataBasket?.total_price.price?.toLocaleString("uz-UZ")} so'm
-                </del>
-                <p className="text-sm text-gray-700">including VAT</p>
-              </div>
-            </div>
-            <BasketCheckout selectProduct={selectedUsers} />
-          </div>
-        </div>
+        </section>
+
       </div>
     </div>
   );

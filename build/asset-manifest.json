@@ -1,12 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.3430e1dc.css",
-    "main.js": "/static/js/main.69a2873a.js",
+    "main.css": "/static/css/main.5011221d.css",
+    "main.js": "/static/js/main.f39673c1.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
-    "static/media/all_done.jpg": "/static/media/all_done.f28919c193904538bfa8.jpg",
-    "static/media/a_lot_left.jpg": "/static/media/a_lot_left.74c190fff0d38fcf8664.jpg",
-    "static/media/almost_done.jpg": "/static/media/almost_done.11bf8b3a4c8ac6d38ca2.jpg",
-    "static/media/still_got_some.jpg": "/static/media/still_got_some.8689a0d8a086eb903185.jpg",
     "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
@@ -24,11 +20,11 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.3430e1dc.css.map": "/static/css/main.3430e1dc.css.map",
-    "main.69a2873a.js.map": "/static/js/main.69a2873a.js.map"
+    "main.5011221d.css.map": "/static/css/main.5011221d.css.map",
+    "main.f39673c1.js.map": "/static/js/main.f39673c1.js.map"
   },
   "entrypoints": [
-    "static/css/main.3430e1dc.css",
-    "static/js/main.69a2873a.js"
+    "static/css/main.5011221d.css",
+    "static/js/main.f39673c1.js"
   ]
 }

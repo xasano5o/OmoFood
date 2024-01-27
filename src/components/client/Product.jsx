@@ -137,7 +137,7 @@ function Product() {
 
   const ShowDetails = () => {
     return (
-      //   <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"/>
+      //   <img alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"/>
       <>
         <div className="row d-flex justify-content-center w-full">
           <div className="col-md-12">
