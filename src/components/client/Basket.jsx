@@ -239,12 +239,23 @@ const Basket = () => {
                           so'm
                         </p>
                       ) : null}
+
+
                       {value?.total_price?.discount_price && value?.product?.discount?.product_discount_price ? (
                         <del>
                           {value?.product?.price?.toLocaleString("uz-UZ")} so'm
                         </del>
                       ) : <p>
                         {value?.product?.price?.toLocaleString("uz-UZ")} so'm
+                      </p>}
+
+                      {value?.total_price?.discount_price ? (
+                        null
+                      ) : <p className="text-sm">
+                        {value?.total_price?.price?.toLocaleString(
+                          "uz-UZ"
+                        )}
+                        so'm
                       </p>}
                     </span>
                   </div>
