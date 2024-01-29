@@ -8,6 +8,7 @@ const token = localStorage.getItem("user");
 
 axios.defaults.baseURL = baseUrl;
 
+// Set the default headers with the Authorization token
 
 
 export const api = fetchBaseQuery({
