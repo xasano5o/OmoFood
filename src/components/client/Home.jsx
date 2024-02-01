@@ -8,16 +8,16 @@ import DiscountCom from "./discounCom.jsx";
 const Home = () => {
   const { data } = useGetBannersQuery();
   return (
-    <div classNameName="md:mt-24">
-      <div classNameName="container px-0">
-        <Carousel classNameName="z" autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={true}>
+    <div className="md:mt-24">
+      <div className="container px-0">
+        <Carousel className="z" autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={true}>
           {data?.map((item,index) => {
             return (
               <>
-                <div  key={index+1} classNameName="carousel-item active" data-bs-interval="10000">
+                <div  key={index+1} className="carousel-item active" data-bs-interval="10000">
                   <img
                     src={item?.image}
-                    classNameName="h-96 object-contain w-full"
+                    className="h-96 object-contain w-full"
                     alt="banner_image"
                   />
                 </div>

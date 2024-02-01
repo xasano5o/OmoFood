@@ -87,7 +87,6 @@ const AddNote = ({ object }) => {
                   onChange={(e) => setInputValue({ ...inputValue, amount: e.target.value })}
                 />
               </div>
-
               <div>
                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 ">Comment....</label>
                 <textarea
@@ -117,17 +116,17 @@ const AddNote = ({ object }) => {
                 </select>
 
                 <div>
-                <label htmlFor="Maxsulot Name:">Yangi Maxsulot:</label>
-                <input
-                  disabled={inputValue?.product!=="Hech Biri" && inputValue?.product!==undefined && inputValue?.product>0}
-                  autoComplete='off'
-                  type="text"
-                  id="table-search-users"
-                  className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-lg w-60 bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder=""
-                  onChange={(e) => setInputValue({ ...inputValue, product: e.target.value })}
-                />
-              </div>
+                  <label htmlFor="Maxsulot Name:">Yangi Maxsulot:</label>
+                  <input
+                    disabled={inputValue?.product !== "Hech Biri" && inputValue?.product !== undefined && inputValue?.product > 0}
+                    autoComplete='off'
+                    type="text"
+                    id="table-search-users"
+                    className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-lg w-60 bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder=""
+                    onChange={(e) => setInputValue({ ...inputValue, product: e.target.value })}
+                  />
+                </div>
 
               </div>
             </div>

@@ -1,15 +1,14 @@
 import React from "react";
+import Countdown from "react-countdown";
 import Skeleton from "react-loading-skeleton";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   useCreateBasketMutation,
   useDeleteBasketMutation,
   useGetProductQuery,
   useIncrementMutation,
 } from "../../redux/slice/client/basket/index.js";
-import { toast } from "react-toastify";
-import { FaCartPlus } from "react-icons/fa";
-import Countdown from "react-countdown";
 
 
 
@@ -98,18 +97,18 @@ function DiscountCom() {
                         <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
                           {product?.title}
                         </p>
-                     
-                          {discountTimeLeft !== undefined && discountTimeLeft > 0 && <Countdown date={Date.now() + diffTime} />}
+
                       </div>
+                      {discountTimeLeft !== undefined && discountTimeLeft > 0 && <Countdown date={Date.now() + diffTime} />}
                       {product?.discount?.product_discount_price ? (
-                          <div className="f">
-                            <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
-                            <br />
-                            <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
-                          </div>
-                        ) : (
-                          <b className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</b>
-                        )}
+                        <div className="f">
+                          <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
+                          <br />
+                          <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
+                        </div>
+                      ) : (
+                        <b className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</b>
+                      )}
                     </div>
                     <div className="p-6 pt-0">
                       {product?.basket?.amount ? (
@@ -119,7 +118,6 @@ function DiscountCom() {
                             onClick={() => decrement(product?.basket)}
                             className="cursor-pointer rounded-l bg-blue-700 text-white py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
                           >
-                            {" "}
                             -{" "}
                           </span>
                           <input className="h-8 w-8 border text-center text-xs outline-none" type="text" value={product?.basket?.amount} min="1" />
@@ -128,7 +126,6 @@ function DiscountCom() {
                             onClick={() => updateBasket(product?.basket, product?.basket?.amount + 1)}
                             className="cursor-pointer rounded-r bg-blue-700 text-white py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
                           >
-                            {" "}
                             +{" "}
                           </span>
                         </div>

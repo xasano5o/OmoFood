@@ -128,12 +128,12 @@ function DiscountCom() {
             return (
               <div className="col-6 col-md-3 col-lg-3 mb-3" >
                 <div className="h-100">
-                  <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl h-[450px]" key={product?.id}>
+                  <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl h-[350px] lg:h-[400px]" key={product?.id}>
                     <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl">
                       <NavLink to={`/product/${product?.id}`}>
                         <img
                           src={product?.image}
-                          alt={product?.title} className="object-contain w-full h-[300px]" />
+                          alt={product?.title} className="object-contain w-full h-fit" />
                       </NavLink>
                     </div>
                     <div className="p-6">
