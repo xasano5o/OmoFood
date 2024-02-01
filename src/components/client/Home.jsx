@@ -27,7 +27,7 @@ const Home = () => {
 
         </Carousel>
         <DiscountCom />
-        <CategorySlide />
+        {/* <CategorySlide /> */}
         <Products />
       </div>
     </div>

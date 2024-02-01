@@ -139,19 +139,19 @@ function Product() {
                       showStatus={false}
                       infiniteLoop={true}
                     >
-                      <div className="">
+                      <div className="h-[480px]">
                         <img
                           src={product?.image}
                           alt={product?.title}
-                          className="object-contain w-full"
+                          className="object-contain w-full h-fit"
                         />
                       </div>
                       {product.images.map((item, index) => (
-                        <div key={index} className="h-[450px]">
+                        <div key={index} className="h-fit">
                           <img
                             src={item?.image}
                             alt={`${index}`}
-                            className="object-contain w-full"
+                            className="object-contain w-full h-fit"
                           />
                         </div>
                       ))}
@@ -162,7 +162,7 @@ function Product() {
                 </div>
 
                 <div className="col-md-6">
-                  <div className="w-full border p-4 shadow-md ">
+                  <div className="w-full border p-4 shadow-md border-gray-100 h-[600px]">
                     <div className="mt-4 mb-3">
                       <h5 className="text-uppercase">{product?.title}</h5>
                       <span className="text-capitalize text-orange-600">
@@ -194,7 +194,7 @@ function Product() {
                     </p>
                     {product?.basket?.amount ? (
                       <div>
-                        <div className="flex py-4 justify-around items-center border-gray-100">
+                        <div className="flex py-4 justify-around items-center ">
                           <span
                             onClick={() => decrement(product.basket)}
                             className="cursor-pointer rounded-l bg-blue-500 py-1 px-3.5 text-white duration-100 hover:bg-blue-500 hover:text-blue-50"
