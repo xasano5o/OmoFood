@@ -141,7 +141,6 @@ function DiscountCom() {
                         <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
                           {product?.title}
                         </p>
-
                       </div>
                       {product?.discount?.product_discount_price ? (
                         <div className="f">

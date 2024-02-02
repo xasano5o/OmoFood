@@ -4,7 +4,7 @@ import Modal from '../../generic/Modal';
 import ImageUpload from '../../ImageUpload/ImageUpload';
 import { MdOutlineInsertPhoto } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import { useCreateProductMutation, useUpdateProductMutation } from '../../../redux/slice/client/getProduct';
+import {  useUpdateProductMutation } from '../../../redux/slice/client/getProduct';
 import { useGetSubCategoryQuery } from '../../../redux/slice/client/subcategory';
 import { BiEdit } from 'react-icons/bi';
 
@@ -35,8 +35,15 @@ const UpdateProduct = ({object}) => {
     formData.append('price', inputValue.price);
     formData.append('amount', inputValue.amount);
     formData.append('amount_measure', inputValue.amount_measure);
-    formData.append('category', inputValue.category);
-    formData.append('subcategory', inputValue.subcategory);
+    if (inputValue.category) {
+      formData.append('category', inputValue.category);
+    }else{
+      formData.append('category', inputValue.category);
+
+    }
+    if (inputValue.subcategory) {
+      formData.append('subcategory', inputValue.subcategory);
+    }
     formData.append('id', inputValue.id);
     try {
       await updateProduct(formData).unwrap();
@@ -47,7 +54,7 @@ const UpdateProduct = ({object}) => {
       });
       setOpen(false);
     } catch (error) {
-      toast.error(`Failed to add maxsulot ${inputValue.title}`);
+      toast.error(` Maxsulot ${inputValue.title} xatolik `);
 
     }
   };
@@ -134,10 +141,10 @@ const UpdateProduct = ({object}) => {
                    value={inputValue?.category?.title}
                  onChange={(e) => setInputValue({ ...inputValue, category: e.target.value })}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option value="Hech Biri">Hech Biri</option>
+                  <option value="Hech Biri">{object.category.title}</option>
                   {data.map((value) => {
                     return (
-                      <option value={value.id}>{value.title}</option>
+                      <option value={  value.id }>{value.title}</option>
                     )
                   })}
                 </select>
@@ -148,7 +155,7 @@ const UpdateProduct = ({object}) => {
                     value={inputValue?.subcategory?.title}
                   onChange={(e) => setInputValue({ ...inputValue, subcategory: e.target.value })}
                     className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Hech Biri">Hech Biri</option>
+                    <option value="Hech Biri">{object?.subcategory?.title}</option>
                     {subData.map((value) => {
                       return (
                         <option value={value.id}>{value.title}</option>

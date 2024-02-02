@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useGetSearchQuery } from "../../redux/slice/client/search";
 import { useGetBasketQuery } from "../../redux/slice/client/basket";
+import Logo from "../../assest/photo1705589004.jpeg"
+
 import axios from "axios";
-import Sidekatalg, { SidebarWithBurgerMenu } from "./Sidekatalg";
 const Navbar = () => {
   const [skip, setSkip] = useState(false);
   const [search, setSearch] = useState("");
@@ -33,11 +33,11 @@ const Navbar = () => {
     setSkip(true);
   };
   useEffect(() => {
-    if (search?.length == 0) setSkip(false);
+    if (search?.length === 0) setSkip(false);
   }, [search]);
 
   useEffect(() => {
-    if (skip == false) setSearch(null);
+    if (skip === false) setSearch(null);
   }, [skip]);
 
   const handleSubmit = (e) => {
@@ -57,9 +57,10 @@ const Navbar = () => {
       
          <div className="logo flex gap-3 items-center">
             <NavLink className="no-underline text-blue-500" to="/">
-              <h1 className="no-underline text-blue-500">
+              {/* <h1 className="no-underline text-blue-500">
                 Omo<b className="text-yellow-600">Food</b>
-              </h1>
+              </h1> */}
+              <img className="w-[70px] rounded-full" src={Logo} alt="" />
             </NavLink>
           </div>
           <div>

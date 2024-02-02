@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useGetBasketQuery } from '../../redux/slice/client/basket';
+import Logo from "../../assest/photo1705589004.jpeg"
 
 const NavbarMobile = () => {
   const { data: dataBasket } = useGetBasketQuery();
@@ -10,9 +11,10 @@ const NavbarMobile = () => {
         <div className="grid h-full max-w-lg grid-cols-2 mx-auto container font-medium">
           <Link className="no-underline text-blue-500 mt-2" to="/">
             {/* <img src="/FakeShop.png" alt="logo" style={{ height: "50px" }} /> */}
-            <h1 className="no-underline text-blue-500">
+            {/* <h1 className="no-underline text-blue-500">
               Omo<b className="text-yellow-600">Food</b>
-            </h1>
+            </h1> */}
+            <img className='w-[40px] rounded-full' src={Logo} alt="" />
           </Link>
           <div className="">
             <Link
