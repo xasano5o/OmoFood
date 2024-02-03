@@ -8,7 +8,6 @@ const BaskerPage = () => {
   return (
     <div>
    <Helmet>
-        <title>Basket Page</title>
        </Helmet>
         <Navbar/>
         <Basket/>

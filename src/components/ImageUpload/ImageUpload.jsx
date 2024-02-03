@@ -12,7 +12,7 @@
 
   }) {
     const [errorMessage, setErrorMessage] = useState(null);
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState(value);
     const handleImageChange = (e) => {
       const file = e.target.files[0];
       setInputValue({ ...inputValue, [LabelFor]: file })

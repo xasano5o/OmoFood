@@ -17,6 +17,7 @@ import NavbarMobile from './components/client/NavbarMobile.jsx';
 import CategoryIdPage from './pages/client/categorieid/index.jsx';
 import HomePage from './pages/client/home/index.jsx';
 import ProductPage from './pages/client/product/index.jsx';
+import BaskerPage from './pages/client/basket/index.jsx';
 
 function App() {
   const location = useLocation();
@@ -33,7 +34,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/categories/:id" element={<CategoryIdPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
-        <Route path='basket' element={<Basket />} />
+        <Route path='/basket' element={<BaskerPage />} />
         <Route path="/admin" element={<Login />} />
 
         {
