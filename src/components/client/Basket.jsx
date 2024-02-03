@@ -274,7 +274,7 @@ const Basket = () => {
               <div className="w-full lg:w-1/3">
                 <div>
                   <h2 className="mb-6 text-3xl font-bold text-gray-800">Cart totals</h2>
-                  <div className="flex flex-wrap items-center justify-between px-10 py-4 w-[30rem] mb-3 font-medium leading-8 bg-gray-100 bg-opacity-50 border text-white dark:bg-gray-800 dark:border-gray-800 rounded-xl">
+                  <div className="flex flex-wrap items-center justify-between px-10 py-4 w-[30rem] mb-3 font-medium leading-8 bg-opacity-50 border text-white bg-gray-800 border-gray-800 rounded-xl">
                     <span>Mahsulotning umimiy narxi</span>
                     <span className="flex items-center text-xl flex-wrap ">
                       <p className="mb-1 text-lg font-bold">

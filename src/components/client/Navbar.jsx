@@ -4,6 +4,8 @@ import { useGetBasketQuery } from "../../redux/slice/client/basket";
 import Logo from "../../assest/photo1705589004.jpeg"
 
 import axios from "axios";
+import Sidekatalg, { SidebarWithBurgerMenu } from "./Sidekatalg";
+import DeskModal from "./DeskModal";
 const Navbar = () => {
   const [skip, setSkip] = useState(false);
   const [search, setSearch] = useState("");
@@ -54,7 +56,7 @@ const Navbar = () => {
       <nav className="navbar bg-light fixed-top shadow">
         
         <div className="container-fluid container grid grid-cols-3 ">
-      
+          <DeskModal/>
          <div className="logo flex gap-3 items-center">
             <NavLink className="no-underline text-blue-500" to="/">
               {/* <h1 className="no-underline text-blue-500">

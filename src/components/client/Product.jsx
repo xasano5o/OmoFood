@@ -19,8 +19,6 @@ function Product() {
   const [createBasket, { isLoading: createIsloading }] =
     useCreateBasketMutation();
 
-
-
   useEffect(() => {
     setFilter(product);
   }, [product]);
@@ -68,7 +66,6 @@ function Product() {
   const Loading = () => {
     return (
       <>
-
         <div className="row d-flex justify-content-center">
           <div className="col-md-12">
             <NavLink className="text-decoration-none text-dark" to={`/`}>
@@ -88,9 +85,7 @@ function Product() {
                 <div className="col-md-6">
                   <div className="border p-4">
                     <div className="mt-4 mb-3">
-                      {" "}
                       <span className="text-uppercase text-muted brand">
-                        {" "}
                         <Skeleton height={30} width={150} />
                       </span>
                       <h5 className="text-uppercase">
@@ -124,7 +119,6 @@ function Product() {
 
   const ShowDetails = () => {
     return (
-      //   <img alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"/>
       <>
         <div className="row d-flex justify-content-center w-full">
           <div className="col-md-12">
@@ -145,19 +139,19 @@ function Product() {
                       showStatus={false}
                       infiniteLoop={true}
                     >
-                      <div className="">
+                      <div className="h-[480px]">
                         <img
                           src={product?.image}
                           alt={product?.title}
-                          className="object-contain w-full"
+                          className="object-contain w-full h-fit"
                         />
                       </div>
                       {product.images.map((item, index) => (
-                        <div key={index} className="h-[450px]">
+                        <div key={index} className="h-fit">
                           <img
                             src={item?.image}
-                            alt={`Image ${index}`}
-                            className="object-contain w-full"
+                            alt={`${index}`}
+                            className="object-contain w-full h-fit"
                           />
                         </div>
                       ))}
@@ -168,14 +162,14 @@ function Product() {
                 </div>
 
                 <div className="col-md-6">
-                  <div className="w-full border p-4 shadow-md ">
+                  <div className="w-full border p-4 shadow-md border-gray-100 h-[600px]">
                     <div className="mt-4 mb-3">
                       <h5 className="text-uppercase">{product?.title}</h5>
                       <span className="text-capitalize text-orange-600">
                         {product?.category?.title}
                       </span>
                       <div className="price d-flex flex-row align-items-center">
-                      {product?.discount?.product_discount_price ? (
+                        {product?.discount?.product_discount_price ? (
                           <div className="f">
                             <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
                             <br />
@@ -200,7 +194,7 @@ function Product() {
                     </p>
                     {product?.basket?.amount ? (
                       <div>
-                        <div className="flex py-4 justify-around items-center border-gray-100">
+                        <div className="flex py-4 justify-around items-center ">
                           <span
                             onClick={() => decrement(product.basket)}
                             className="cursor-pointer rounded-l bg-blue-500 py-1 px-3.5 text-white duration-100 hover:bg-blue-500 hover:text-blue-50"
@@ -239,6 +233,7 @@ function Product() {
                           onClick={() => addData(product)} className="bg-blue-700 flex gap-2 hover:bg-blue-800 text-white font-bold border px-4 py-2 border-blue-700 rounded">
                           <FaCartPlus className=" cursor-pointer text-2xl" /> Savatga Qo'shish
                         </button>
+                        
                       </div>
                     )}
                   </div>
