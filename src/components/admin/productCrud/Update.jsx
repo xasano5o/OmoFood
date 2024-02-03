@@ -4,7 +4,7 @@ import Modal from '../../generic/Modal';
 import ImageUpload from '../../ImageUpload/ImageUpload';
 import { MdOutlineInsertPhoto } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import {  useUpdateProductMutation } from '../../../redux/slice/client/getProduct';
+import { useUpdateProductMutation } from '../../../redux/slice/client/getProduct';
 import { useGetSubCategoryQuery } from '../../../redux/slice/client/subcategory';
 import { BiEdit } from 'react-icons/bi';
 
@@ -15,7 +15,7 @@ const UpdateProduct = ({ object }) => {
 
   // redux
   const [updateProduct, { isLoading: isCreating }] = useUpdateProductMutation();
-  const { data, isLoading, refetch } = useGetCategoryQuery({ skip });
+  const { data, isLoading } = useGetCategoryQuery({ skip });
   const { data: subData } = useGetSubCategoryQuery({ skip });
 
   // function
@@ -27,12 +27,20 @@ const UpdateProduct = ({ object }) => {
   const addData = async () => {
     const formData = new FormData();
     formData.append('title', inputValue.title);
-    formData.append('image', inputValue.img);
+    if (inputValue.image !== object.image) {
+      const imageData = new FormData();
+      imageData.append('image', inputValue.image);
+    }
     formData.append('description', inputValue.description);
     formData.append('price', inputValue.price);
     formData.append('amount', inputValue.amount);
     formData.append('amount_measure', inputValue.amount_measure);
-    formData.append('category', inputValue.category);
+    if (inputValue.category.id) {
+      formData.append('category', inputValue.category.id);
+    }
+    else if (!inputValue.category.id) {
+      formData.append('category', object.category.id);
+    }
     if (inputValue.subcategory) {
       formData.append('subcategory', inputValue.subcategory);
     }
@@ -41,16 +49,14 @@ const UpdateProduct = ({ object }) => {
     try {
       await updateProduct(formData).unwrap();
       toast.success(`Maxsulot ${inputValue.title} o'zgartirildi `);
-      setInputValue({
-        title: '',
-        img: '',
-      });
       setOpen(false);
     } catch (error) {
-      toast.error(`Failed to add maxsulot ${inputValue.title}`);
+      console.log(error, 'error');
+      toast.error(`  axsulot ${inputValue.title}`);
     }
   };
 
+  console.log(object, 'object');
   return (
     <div>
       <button
@@ -127,24 +133,22 @@ const UpdateProduct = ({ object }) => {
               <div className='flex flex-col'>
                 <label htmlFor="" className='text-gray-900'>Kategorie Tanlang</label>
                 <select
-                  value={inputValue?.category?.id}
                   onChange={(e) => setInputValue({ ...inputValue, category: e.target.value })}
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option value="Hech Biri">{object.category.title}</option>
-                  {data.map((value) => {
+
+                  className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  {data?.map((value) => {
                     return (
-                      <option value={value.id} key={value.id}>{value.title}</option>
+                      <option value={value.id} key={value.id}>{ object.category.title ? object.category.title: value.title}</option>
                     )
                   })}
                 </select>
-
                 <div className='flex flex-col '>
                   <label htmlFor="" className='text-gray-900'> Ichki Kategoriyani Tanlash</label>
                   <select
-                    value={inputValue?.subcategory?.id}
-                    onChange={(e) => setInputValue({ ...inputValue, subcategory: e.target.value })}
+                    value={inputValue?.subcategory?.id || object?.subcategory?.id || ''}
                     className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Hech Biri">Hech Biri</option>
+                    <option value={object?.subcategory?.id}>{object?.subcategory?.title || 'Hech biri'}</option>
+
                     {subData?.map((value) => {
                       return (
                         <option value={value?.id}>{value?.title}</option>
@@ -161,7 +165,7 @@ const UpdateProduct = ({ object }) => {
                     LabelFor={'img'}
                     setInputValue={setInputValue}
                     inputValue={inputValue}
-                    value={inputValue.image}
+                    value={inputValue?.image || object?.image || ''}
                   />
                   <div>
                   </div>
