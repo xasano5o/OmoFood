@@ -1,4 +1,4 @@
-  import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useGetCategoryQuery } from '../../../redux/slice/client/category';
 import Modal from '../../generic/Modal';
 import ImageUpload from '../../ImageUpload/ImageUpload';
@@ -8,23 +8,20 @@ import {  useUpdateProductMutation } from '../../../redux/slice/client/getProduc
 import { useGetSubCategoryQuery } from '../../../redux/slice/client/subcategory';
 import { BiEdit } from 'react-icons/bi';
 
-const UpdateProduct = ({object}) => {
+const UpdateProduct = ({ object }) => {
   // state
   const [skip, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState(object);
 
   // redux
   const [updateProduct, { isLoading: isCreating }] = useUpdateProductMutation();
-  const { data, isLoading, refetch } = useGetCategoryQuery({skip});
-  const { data:subData } = useGetSubCategoryQuery({skip})
+  const { data, isLoading, refetch } = useGetCategoryQuery({ skip });
+  const { data: subData } = useGetSubCategoryQuery({ skip });
 
-
-
-  // fuction
+  // function
   const onClose = () => {
     setOpen(false);
   };
-
 
   // post data
   const addData = async () => {
@@ -35,16 +32,12 @@ const UpdateProduct = ({object}) => {
     formData.append('price', inputValue.price);
     formData.append('amount', inputValue.amount);
     formData.append('amount_measure', inputValue.amount_measure);
-    if (inputValue.category) {
-      formData.append('category', inputValue.category);
-    }else{
-      formData.append('category', inputValue.category);
-
-    }
+    formData.append('category', inputValue.category);
     if (inputValue.subcategory) {
       formData.append('subcategory', inputValue.subcategory);
     }
     formData.append('id', inputValue.id);
+
     try {
       await updateProduct(formData).unwrap();
       toast.success(`Maxsulot ${inputValue.title} o'zgartirildi `);
@@ -54,8 +47,7 @@ const UpdateProduct = ({object}) => {
       });
       setOpen(false);
     } catch (error) {
-      toast.error(` Maxsulot ${inputValue.title} xatolik `);
-
+      toast.error(`Failed to add maxsulot ${inputValue.title}`);
     }
   };
 
@@ -71,7 +63,6 @@ const UpdateProduct = ({object}) => {
       {skip && (
         <Modal loader={isCreating} closeModal={onClose} addFunc={addData}>
           <div className='grid grid-cols-2 gap-3 '>
-          
             <div className='flex flex-col gap-2'>
               <div>
                 <label htmlFor="Maxsulot Nomi:" className='text-black'>Maxsulot Nomi:</label>
@@ -109,22 +100,21 @@ const UpdateProduct = ({object}) => {
               <div>
                 <label htmlFor="Maxsulot Name:">Maxsulot o'lchov:</label>
                 <select
-                value={inputValue.amount_measure}
-                 
-                onChange={(e) => setInputValue({ ...inputValue, amount_measure: e.target.value })}
+                  value={inputValue.amount_measure}
+                  onChange={(e) => setInputValue({ ...inputValue, amount_measure: e.target.value })}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option value="Hech Biri">Hech Biri</option>
-                   <option value="kg">kg</option>
-                   <option value="dona">dona</option>
-                   <option value="litr">litr</option>
-                   <option value="metr">metr</option>
+                  <option value="kg">kg</option>
+                  <option value="dona">dona</option>
+                  <option value="litr">litr</option>
+                  <option value="metr">metr</option>
                 </select>
               </div>
               <div>
                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 ">Mahsulox haqida....</label>
                 <textarea
-                 value={inputValue.description}
-                id="message"
+                  value={inputValue.description}
+                  id="message"
                   rows="4"
                   onChange={(e) => setInputValue({ ...inputValue, description: e.target.value })}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -132,19 +122,18 @@ const UpdateProduct = ({object}) => {
                   required
                 ></textarea>
               </div>
-
             </div>
             <div className='flex flex-col '>
               <div className='flex flex-col'>
                 <label htmlFor="" className='text-gray-900'>Kategorie Tanlang</label>
                 <select
-                   value={inputValue?.category?.title}
-                 onChange={(e) => setInputValue({ ...inputValue, category: e.target.value })}
+                  value={inputValue?.category?.id}
+                  onChange={(e) => setInputValue({ ...inputValue, category: e.target.value })}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option value="Hech Biri">{object.category.title}</option>
                   {data.map((value) => {
                     return (
-                      <option value={  value.id }>{value.title}</option>
+                      <option value={value.id} key={value.id}>{value.title}</option>
                     )
                   })}
                 </select>
@@ -152,13 +141,13 @@ const UpdateProduct = ({object}) => {
                 <div className='flex flex-col '>
                   <label htmlFor="" className='text-gray-900'> Ichki Kategoriyani Tanlash</label>
                   <select
-                    value={inputValue?.subcategory?.title}
-                  onChange={(e) => setInputValue({ ...inputValue, subcategory: e.target.value })}
+                    value={inputValue?.subcategory?.id}
+                    onChange={(e) => setInputValue({ ...inputValue, subcategory: e.target.value })}
                     className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Hech Biri">{object?.subcategory?.title}</option>
-                    {subData.map((value) => {
+                    <option value="Hech Biri">Hech Biri</option>
+                    {subData?.map((value) => {
                       return (
-                        <option value={value.id}>{value.title}</option>
+                        <option value={value?.id}>{value?.title}</option>
                       )
                     })}
                   </select>
@@ -172,6 +161,7 @@ const UpdateProduct = ({object}) => {
                     LabelFor={'img'}
                     setInputValue={setInputValue}
                     inputValue={inputValue}
+                    value={inputValue.image}
                   />
                   <div>
                   </div>
@@ -179,7 +169,6 @@ const UpdateProduct = ({object}) => {
               </div>
             </div>
           </div>
-
         </Modal>
       )}
     </div>
