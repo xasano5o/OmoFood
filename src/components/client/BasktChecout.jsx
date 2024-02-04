@@ -29,14 +29,14 @@ const BasketCheckout = ({ selectProduct }) => {
     const formData = new FormData();
     // Iterate through each element in selectProduct
     selectProduct?.forEach((file, index) => {
-      console.log(file);
       // Append each file with a unique key, for example: basket_products_0, basket_products_1, etc.
       formData.append(`basket_products`, file);
     });
     // Append other form fields
     formData.append("user.first_name", inputValue.first_name);
 
-    if (inputValue.last_name.length) {
+    console.log(inputValue?.last_name);
+    if (inputValue?.last_name?.length) {
       formData.append("user.last_name", inputValue.last_name);
     }
     formData.append("user.phone", inputValue.phone);
