@@ -20,7 +20,7 @@ const NavbarMobile = () => {
           <div className="">
             <Link
               to={"/basket"}
-              className="no-underline text-xl flex flex-col -mt-3 items-center "
+              className="no-underline text-xl flex flex-col -mt-1 items-center "
               >
               <h5 className='text-yellow-600'>{dataBasket?.items?.length}</h5>
               <button className="navbar-toggler left-0" type="button">

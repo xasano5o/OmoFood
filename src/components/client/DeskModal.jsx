@@ -26,6 +26,7 @@ export default function DeskModal() {
                                 
                             </div>
                             <div className="p-6 flex-auto">
+                                
                             <div className="flex justify-between">
                               <h1 className="text-2xl font-bold mb-4">Turkumlar</h1>
                                 <button className="text-2xl font-bold mb-4 text-red-800" onClick={() => setShowModal(false)} >X</button>
@@ -38,6 +39,7 @@ export default function DeskModal() {
                                             onClick={(e) => {
                                                 e.preventDefault();
                                                 navigate(`/categories/${item.id}`);
+                                                setShowModal(false)
                                             }}
                                             key={item.id}
                                         >

@@ -1,3 +1,11 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  font-family: 'IBM Plex Mono', monospace !important;
+
+
+}
+
 #app {
     height: 100%
 }
@@ -71,3 +79,16 @@ body {
     width: 100%;
 }
 
+.max-width{
+    max-width: 1440px;
+    margin:  0 auto;
+}
+@media screen and (max-width:700px) {
+    .logo{
+        display: none;
+    }
+    .text-xss{
+        font-size: 12px !important;
+        background: red !important  ;
+    }
+}

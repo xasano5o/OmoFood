@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useGetBasketQuery } from "../../redux/slice/client/basket";
 import Logo from "../../assest/photo1705589004.jpeg"
+import { FaChevronLeft } from "react-icons/fa6";
 
 import axios from "axios";
-import Sidekatalg, { SidebarWithBurgerMenu } from "./Sidekatalg";
 import DeskModal from "./DeskModal";
 const Navbar = () => {
   const [skip, setSkip] = useState(false);
@@ -53,17 +53,22 @@ const Navbar = () => {
   };
   return (
     <div className="bot">
-      <nav className="navbar bg-light fixed-top shadow">
-        
-        <div className="container-fluid container grid grid-cols-3 ">
-          <DeskModal/>
-         <div className="logo flex gap-3 items-center">
-            <NavLink className="no-underline text-blue-500" to="/">
-              {/* <h1 className="no-underline text-blue-500">
-                Omo<b className="text-yellow-600">Food</b>
-              </h1> */}
-              <img className="w-[70px] rounded-full" src={Logo} alt="" />
-            </NavLink>
+      <nav className="navbar bg-light flex flex-col gap-1  shadow">
+
+        <div className="  container-fluid ">
+          <NavLink className="no-underline text-blue-500" to="/">
+
+            <img className="logo  w-[70px] rounded-full" src={Logo} alt="" />
+          </NavLink>
+          <DeskModal />
+    <NavLink  to={'/'}>
+    <FaChevronLeft />
+    </NavLink>
+
+          <div className="logo flex gap-3 items-center">
+
+
+
           </div>
           <div>
             <div className="">
@@ -219,7 +224,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
-        
+
           <div className="basket">
             <Link
               to={"/basket"}
@@ -231,7 +236,7 @@ const Navbar = () => {
               </button>
             </Link>
           </div>
-        
+
         </div>
       </nav>
     </div>

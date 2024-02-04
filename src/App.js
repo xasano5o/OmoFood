@@ -18,6 +18,9 @@ import CategoryIdPage from './pages/client/categorieid/index.jsx';
 import HomePage from './pages/client/home/index.jsx';
 import ProductPage from './pages/client/product/index.jsx';
 import BaskerPage from './pages/client/basket/index.jsx';
+import DeskModal from './components/client/DeskModal.jsx';
+import HomeIndex from './components/client/index.jsx';
+import Home from './components/client/Home.jsx';
 
 function App() {
   const location = useLocation();
@@ -31,7 +34,9 @@ function App() {
       <NavbarMobile />
 
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route index element={<HomeIndex />} />
+        <Route path='/home' element={<HomePage />} />
+
         <Route path="/categories/:id" element={<CategoryIdPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path='/basket' element={<BaskerPage />} />

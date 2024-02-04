@@ -209,3 +209,6 @@ body {
 .actives {
   background-color: rgb(29 78 216);
 }
+.texts{
+  text-decoration: none !important;
+}

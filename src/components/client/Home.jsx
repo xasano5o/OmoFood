@@ -9,25 +9,19 @@ const Home = () => {
   const { data } = useGetBannersQuery();
   return (
     <div className="md:mt-24">
-      <div className="container px-0">
-        <Carousel className="z" autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={true}>
-          {data?.map((item,index) => {
-            return (
-              <>
-                <div  key={index+1} className="carousel-item active" data-bs-interval="10000">
-                  <img
-                    src={item?.image}
-                    className="h-96 object-contain w-full"
-                    alt="banner_image"
-                  />
-                </div>
-              </>
-            );
-          })}
-
+      <div className="container px-0 bg-white">
+        <Carousel className="w-full bg-white" autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={true}>
+          {data?.map((item, index) => (
+            <div key={index + 1} className="carousel-item active w-full " data-bs-interval="10000">
+              <img
+                src={item?.image}
+                className="object-cover w-full h-[350px]"
+                alt="banner_image"
+              />
+            </div>
+          ))}
         </Carousel>
         <DiscountCom />
-        {/* <CategorySlide /> */}
         <Products />
       </div>
     </div>

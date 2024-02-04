@@ -136,7 +136,7 @@ function DiscountCom() {
                           alt={product?.title} className="object-contain w-full h-fit" />
                       </NavLink>
                     </div>
-                    <div className="p-6">
+                    <div className="p-2">
                       <div className="flex items-center justify-between mb-2">
                         <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
                           {product?.title}
@@ -144,15 +144,14 @@ function DiscountCom() {
                       </div>
                       {product?.discount?.product_discount_price ? (
                         <div className="f">
-                          <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
-                          <br />
+                          <b className="text-xs">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
                           <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
                         </div>
                       ) : (
                         <b className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</b>
                       )}
                     </div>
-                    <div className="p-6 pt-0">
+                    <div className="p-2 pt-0">
                       {product?.basket?.amount ? (
                         <div className="flex py-4 justify-around items-center border-gray-100">
                           <span
