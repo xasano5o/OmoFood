@@ -32,10 +32,8 @@ export default function HomeIndex() {
                     
                     <NavLink className={'texts'} to={'/home'}>
                         <div className="flex gap-2   items-center justify-center border rounded transition duration-300 no-underline hover:bg-gray-100">
-                            <h1 className="text-2xl font-bold mb-4"> Barcha Mahsulotlarni</h1>
-                          
                           <br /> 
-                                <h1 className=" text-2xl font-bold mb-4 cursor-pointer">Umumiy Ko'rish</h1>
+                                <h1 className=" text-2xl font-bold mb-4 cursor-pointer">Barcha Mahsulotlarni Umumiy Ko'rish</h1>
                         </div>
                             </NavLink>
   <br />
