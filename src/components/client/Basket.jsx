@@ -286,7 +286,7 @@ const Basket = () => {
                       </del>
                     </span>
                   </div>
-                  <BasketCheckout />
+                  <BasketCheckout selectProduct={selectedUsers} />
 
                 </div>
               </div>

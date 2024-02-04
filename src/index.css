@@ -212,3 +212,7 @@ body {
 .texts{
   text-decoration: none !important;
 }
+
+.cadr{
+  display: none  !important;
+}

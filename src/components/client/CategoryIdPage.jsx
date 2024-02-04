@@ -151,7 +151,7 @@ const CategoryId = () => {
                       </div>
                       <div className="p-6">
                         <div className="flex items-center justify-between mb-2">
-                          <p  className="block text-blue-900 font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                          <p  className="block text-blue-900 font-sans text-base antialiased font-medium leading-relaxed ">
                             {product?.title}
                           </p>
 
