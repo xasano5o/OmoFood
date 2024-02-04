@@ -61,13 +61,11 @@ const Navbar = () => {
             <img className="logo  w-[70px] rounded-full" src={Logo} alt="" />
           </NavLink>
           <DeskModal />
-    <NavLink  to={'/'}>
-    <FaChevronLeft />
-    </NavLink>
+          <NavLink to={'/'}>
+            <FaChevronLeft />
+          </NavLink>
 
           <div className="logo flex gap-3 items-center">
-
-
 
           </div>
           <div>
@@ -80,7 +78,7 @@ const Navbar = () => {
                   Search
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <div className="absolute  inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <svg
                       className="w-4 h-4 text-gray-500 dark:text-gray-400"
                       aria-hidden="true"
@@ -115,14 +113,8 @@ const Navbar = () => {
               </form>
             </div>
             {skip && (
-              <div className="transition duration-150 ease-out md:ease-in absolute -z-50 left-0  w-[100%] h-[100vh]">
-                {/* <NavLink className="" to={`/product/${product?.id}`}>
-                  <button className="btn btn-sm m-3 border-primary">
-                    <span className="fa fa-arrow-right text-muted" />
-                  </button>
-                </NavLink> */}
-
-                <div className="bg-white absolute pt-12  px-6 rounded shadow-lg flex flex-col w-[100%] h-screen overflow-x-auto sx:overflow-y-auto sx:h-[30vh]">
+              <div className="  bg-red-400 transition duration-150 ease-out md:ease-in absolute -z-50 left-0  w-[100%] h-[100vh]">
+                <div className="  z-20 bg-white  pt-12  px-6 rounded shadow-lg flex flex-col w-[100%] h-screen overflow-x-auto sx:overflow-y-auto sx:h-[30vh]">
                   {data?.result?.categories?.map((value) => {
                     return (
                       <div>

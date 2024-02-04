@@ -163,30 +163,31 @@ function Product() {
 
                 <div className="col-md-6">
                   <div className="w-full border p-4 shadow-md border-gray-100 h-[600px]">
-                  <div className="mt-4 mb-3 max-w-[700px]">
-  <h5 className="text-uppercase">{product?.title}</h5>
-  <span className="text-capitalize text-orange-600">
-    {product?.category?.title}
-  </span>
-  <div className="price d-flex flex-row align-items-center">
-    {product?.discount?.product_discount_price ? (
-        <>
-        <span className=".text-xss">{product?.discount?.product_discount_price} so'm</span>
-        <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
-        </>
-    ) : (
-      <big className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</big>
-    )}
-  </div>
-  <div className="price d-flex flex-row align-items-center">
-    <big className="display-6">
-      <b>
-        {product?.amount}{" "}
-        {product?.amount_measure?.toLocaleString("ru-Ru")}
-      </b>
-    </big>
-  </div>
-</div>
+                    <div className="mt-4 mb-3">
+                      <h5 className="text-uppercase">{product?.title}</h5>
+                      <span className="text-capitalize text-orange-600">
+                        {product?.category?.title}
+                      </span>
+                      <div className="price d-flex flex-row align-items-center">
+                        {product?.discount?.product_discount_price ? (
+                          <div className="f">
+                            <b className="text-xm">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
+                            <br />
+                            <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
+                          </div>
+                        ) : (
+                          <big className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</big>
+                        )}
+                      </div>
+                      <div className="price d-flex flex-row align-items-center">
+                        <big className="display-6">
+                          <b>
+                            {product?.amount}{" "}
+                            {product?.amount_measure?.toLocaleString("ru-Ru")}
+                          </b>
+                        </big>
+                      </div>
+                    </div>
                     {/* .slice('0',"600") */}
                     <p className="text-muted whitespace-pre-wrap break-words">
                       {product?.description}

@@ -138,17 +138,17 @@ function DiscountCom() {
                     </div>
                     <div className="p-2">
                       <div className="flex items-center justify-between mb-2">
-                        <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                        <p className="block  text-blue-700 font-sans text-base antialiased font-medium leading-relaxed ">
                           {product?.title}
                         </p>
                       </div>
                       {product?.discount?.product_discount_price ? (
                         <div className="f">
-                          <b className="text-xs">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
+                          <b className="text-xs text-red-900">{product?.discount?.product_discount_price?.toLocaleString("ru-Ru")} so'm</b>
                           <del>{product?.price.toLocaleString("ru-Ru")} so'm</del>
                         </div>
                       ) : (
-                        <b className="text-xm">{product?.price.toLocaleString("ru-Ru")} so'm</b>
+                        <b className="text-xm text-red-900">{product?.price.toLocaleString("ru-Ru")} so'm</b>
                       )}
                     </div>
                     <div className="p-2 pt-0">
@@ -175,7 +175,7 @@ function DiscountCom() {
                       ) : (
                         <button
                           onClick={() => addData(product)}
-                          className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+                          className=" bg-green-500 h-1 flex  items-center justify-center text-white text-sm align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
                         >
                           Savatga qo'shish
                         </button>
