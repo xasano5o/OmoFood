@@ -100,9 +100,6 @@ const Basket = () => {
     return () => clearTimeout(timer);
   }, [dataBasket]);
 
-
-
-
   const selectAll = () => {
     const allUserIds = dataBasket?.items?.map((user) => user?.id);
     setIsAllSelected(!isAllSelected);
@@ -208,7 +205,6 @@ const Basket = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                           </svg>
                         </button>
-
                         <select className="flex justify-center py-2 pl-2 border-l border-gray-300 text-gray-800" onChange={(e) => handleSelectAmount(e, value)}>
                           <option className="flex justify-center" value="1">1</option>
                           <option className="flex justify-center" value="10">10</option>

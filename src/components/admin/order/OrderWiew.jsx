@@ -3,6 +3,8 @@ import { AiOutlineEye } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useDeleteProductImgMutation } from "../../../redux/slice/client/getProduct";
 import Modal from "../../generic/Modal";
+import EmptyBox from "../../EmptyBox/EmptyBox";
+import Loader from "../../Loader/Loader";
 
 export default function OrderWiew({ items }) {
 
@@ -22,7 +24,7 @@ export default function OrderWiew({ items }) {
     };
     const [skip, setOpen] = useState(false);
     const onClose = () => setOpen(!skip);
-
+console.log(items,'items');
 
     return (
         <div>
@@ -36,47 +38,118 @@ export default function OrderWiew({ items }) {
             </button>
             {skip && (
                 <Modal closeModal={onClose} actionType="view">
-                    <div className="w-fit h-[50vh] overflow-x-auto md:w-[80vw] p-4">
-                        <div className="flex flex-wrap w-full h-full md:items-stretch md:flex-row sm:flex-col sm:items-center sx:flex-col">
-                            <div className="md:w-[50%] sm:w-full sx:w-full p-2 h-full">
-                                <div className="grid grid-cols-2 h-[41.3vh] overflow-y-auto bg-white rounded-lg gap-2 shadow-lg border p-4">
-                                    {items?.each_products?.length > 0 ? (
-                                        items.each_products.map((value) =>
-                                            <img src={value?.product?.image} alt={value?.product?.image} />
-                                        )
-                                    ) : (
-                                        <p className="text-gray-800">Maxsulot Rasmlari yuq</p>
-                                    )}
+                    <div className=" ">
+
+                        <h5>Mijoz: &nbsp;{items?.user?.first_name}</h5>
+                        <h6>Tel: &nbsp;{items?.user?.phone}</h6>
+                        <h6>Adres: &nbsp;{items?.delivery?.name}</h6>
+                        <section className="bg-gray-50 dark:bg-white-900 p-3 sm:p-5 antialiased">
+                            <div className="mx-auto max-w-screen-3xl  px-1 lg:px-12">
+                                <div className="bg-white  dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+
+                                    <div className="overflow-x-auto h-[60vh] w-[100%] ">
+                                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                <tr>
+                                                    <th scope="col" className="p-4">
+                                                        Mahsulot nomi
+                                                    </th>
+                                                    <th scope="col" className="p-4">
+                                                        Mahsulot soni
+                                                    </th>
+                                                    <th scope="col" className="p-4">
+                                                        Mahsulot miqdor
+                                                    </th>
+                                                    <th scope="col" className="p-4">
+                                                        Mahsulot narxi
+                                                    </th>
+                                                    <th scope="col" className="p-4">
+                                                        Umumiy narx
+                                                    </th>
+
+                                                    <th scope="col" className="p-4">
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    items.each_products?.map((item) => {
+
+                                                        return (
+                                                            <tr
+                                                                className="border-b dark:border-gray-600 hover:bg-gray-100  dark:hover:bg-white-700"
+                                                                key={item.id}
+                                                            >
+                                                                <td className="px-4 py-3">
+                                                                    <span
+                                                                        className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                                                                    >
+                                                                        {item?.product?.title}
+                                                                    </span>
+                                                                </td>
+                                                                <td className="px-4 py-3">
+                                                                    <span
+                                                                        className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                                                                    >
+                                                                        {item?.amount}
+                                                                    </span>
+                                                                </td>
+                                                                <td className="px-4 py-3">
+                                                                    <span
+                                                                        className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                                                                    >
+                                                                        {item?.product?.amount_measure}
+                                                                    </span>
+                                                                </td>
+                                                                <td className="px-4 py-3">
+                                                                    <span
+                                                                        className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                                                                    >
+                                                                        {item?.product?.price} So'm
+                                                                    </span>
+                                                                </td>
+                                                                <td className="px-4 py-3">
+                                                                    <span
+                                                                        className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                                                                    >
+                                                                        {item?.total_price} So'm
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        );
+                                                    })
+
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                 </div>
                             </div>
-                            <div className="w-fit md:w-[50%] sm:w-full sx:w-full p-2 h-full">
-                                <div className="bg-white rounded-lg shadow-lg border p-4 text-gray-800">
-                                    <h2 className="text-xl mb-2">Barcha malumotlar</h2>
-                                    <p>
-                                        <strong>XARIDORNING Ismi:</strong> {items?.user?.first_name}
-                                    </p>
-                                    <p>
-                                        <strong>Haridornign Familyasi:</strong>{items?.user?.last_name}
-                                    </p>
-                                    <p>
-                                        <strong>Umumiy Xaridlar Narxi:</strong> {items?.total_price} so'm
-                                    </p>
-                                    <p>
-                                        <strong>XARIDORNING telfon raqami:</strong> {items?.user?.phone}
-                                    </p>
-                                    <p>
-                                        <strong>Tolov turi:</strong> {items?.payment_method}
-                                    </p>
-                                    <p>
-                                        <strong>Yekazilganligi haqida: {items?.delivery_status}</strong>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        </section>
                     </div>
                 </Modal>
             )}
         </div>
     );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <tr>
+<th>ID</th>
+<th>Mahsulot nomi</th> 
+<th>Mahsulot soni</th>
+<th>Mahsulot miqdor</th>
+<th>Mahsulot narxi</th> 
+<th>Umumiy narx</th> 
+</tr> */}

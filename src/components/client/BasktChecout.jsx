@@ -40,8 +40,8 @@ const BasketCheckout = ({ selectProduct }) => {
     }
     formData.append("user.phone", inputValue.phone);
     formData.append("location.address", inputValue.address);
-    formData.append("location.longitude", inputValue.location[0]);
-    formData.append("location.latitude", inputValue.location[1]);
+    formData.append("location.longitude", inputValue.location[1]);
+    formData.append("location.latitude", inputValue.location[0]);
     formData.append("delivery", inputValue.address_status);
     formData.append("payment_method", "NAQD");
 

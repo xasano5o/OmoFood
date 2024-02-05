@@ -6,7 +6,7 @@ import { VscLiveShare } from "react-icons/vsc";
 const OrderLocation = ({ location }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const defaultState = {
-    center: [+location?.longitude, +location.latitude],
+    center: [+location?.latitude, +location?.longitude],
     zoom: 15,
   };
 
@@ -32,7 +32,7 @@ const OrderLocation = ({ location }) => {
             </svg>
 
             <a
-              href={`https://www.google.com/maps/search/${location.longitude},${location.latitude}`}
+              href={`https://www.google.com/maps/search/${location.latitude},${location.longitude}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline"
@@ -45,7 +45,7 @@ const OrderLocation = ({ location }) => {
 
           <YMaps>
             <Map defaultState={defaultState}>
-              <Placemark geometry={[+location?.longitude, +location.latitude]} />
+              <Placemark geometry={[+location?.latitude, +location?.longitude]} />
             </Map>
           </YMaps>
         </Modal>

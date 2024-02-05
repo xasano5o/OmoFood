@@ -112,7 +112,7 @@ function DiscountCom() {
             <Sidekatalg/>
           </div> */}
         <div className="row">
-          {products?.map((product) => {
+          {[...products].reverse()?.map((product) => {
             const discountTimeLeft = parseFloat(product?.discount?.time_left);
             const backend_seconds = product?.discount?.time_left;
 

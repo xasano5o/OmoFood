@@ -95,3 +95,8 @@ body {
         font-size: 40px !important;
     }
 }
+
+.crud th ,td{
+    border: 2px solid black !important;
+    background: red;
+}

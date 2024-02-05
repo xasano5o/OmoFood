@@ -11,15 +11,15 @@ const OrderCrud = () => {
   const { data, error, isLoading } = useGetOrderQuery();
   const [search, setSearch] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+
   const filteredData = data
   ? data?.filter((item) =>
-      item?.user?.first_name && item?.user.first_name?.toLowerCase().includes(search.toLowerCase())
+      item?.user?.first_name && item?.user?.first_name?.toLowerCase()?.includes(search.toLowerCase())
     )
   : [];
 
   return (
     <div className=" ">
-      {/* Set the height to 100vh */}
       <section className="bg-gray-50 dark:bg-white-900 p-3 sm:p-5 antialiased">
         <div className="mx-auto max-w-screen-3xl  px-1 lg:px-12">
           <div className="bg-white  dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -54,19 +54,7 @@ const OrderCrud = () => {
                     <th scope="col" className="p-4">
                       Yetkazilganligi haqida
                     </th>
-                    {/* <th scope="col" className="p-4">
-                      To'lov turi
-                    </th>
-                    <th scope="col" className="p-4">
-                      Yetkazilganligi haqida
-                    </th> */}
 
-                    {/* <th scope="col" className="p-4">
-                      Yetkazilganligi haqida
-                    </th>
-                    <th scope="col" className="p-4">
-                      Buyurtma qilingan sana
-                    </th> */}
                     <th scope="col" className="p-4">
                     </th>
                   </tr>
@@ -77,7 +65,7 @@ const OrderCrud = () => {
                       <Loader color="#36d7b7" />
                     </div>
                   ) : filteredData?.length > 0 ? (
-                    filteredData?.map((item) => {
+                    [...filteredData].reverse()?.map((item) => {
                       const dateObject = new Date(item?.created_date);
                       const options = { hour12: false };
                       const formattedDate = dateObject.toLocaleString(
@@ -124,36 +112,6 @@ const OrderCrud = () => {
                               {item?.delivery_status} 
                             </span>
                           </td>
-                          {/* <td className="px-4 py-3">
-                            <span
-                              className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
-                            >
-                              {item?.payment_method}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span
-                              className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
-                            >
-                              {item?.delivery_status}
-                            </span>
-                          </td> */}
-
-                          {/* <td className="px-4 py-3">
-                            <span
-                              className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
-                            >
-                              {item?.location.address}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span
-                              className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
-                            >
-                              {formattedDate}
-                            </span>
-                          </td> */}
-
 
                           <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <div className="flex items-center space-x-4">

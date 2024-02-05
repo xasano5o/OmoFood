@@ -62,7 +62,7 @@ const ProductCrud = () => {
                       <Loader color="#36d7b7" />
                     </div>
                   ) : filteredData?.length > 0 ? (
-                    filteredData?.map((item) => {
+                    [...filteredData].reverse()?.map((item) => {
 
                       const dateObject = new Date(item.created_date);
                       const options = { hour12: false };
