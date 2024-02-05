@@ -43,6 +43,8 @@ console.log(items,'items');
                         <h5>Mijoz: &nbsp;{items?.user?.first_name}</h5>
                         <h6>Tel: &nbsp;{items?.user?.phone}</h6>
                         <h6>Adres: &nbsp;{items?.delivery?.name}</h6>
+                        <h6>Yetkazib berish: &nbsp;{items?.delivery?.price.toLocaleString("ru-Ru")} so'm</h6>
+
                         <section className="bg-gray-50 dark:bg-white-900 p-3 sm:p-5 antialiased">
                             <div className="mx-auto max-w-screen-3xl  px-1 lg:px-12">
                                 <div className="bg-white  dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -105,14 +107,14 @@ console.log(items,'items');
                                                                     <span
                                                                         className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
                                                                     >
-                                                                        {item?.product?.price} So'm
+                                                                        {item?.product?.price.toLocaleString("ru-Ru")} So'm
                                                                     </span>
                                                                 </td>
                                                                 <td className="px-4 py-3">
                                                                     <span
                                                                         className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
                                                                     >
-                                                                        {item?.total_price} So'm
+                                                                        {item?.total_price.toLocaleString("ru-Ru")} So'm
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -127,7 +129,11 @@ console.log(items,'items');
                                 </div>
                             </div>
                         </section>
+                        <div className="flex justify-end px-4">
+   <h6>umumiy narx: {items?.total_price.toLocaleString("ru-Ru")} so'm</h6>
+   </div>
                     </div>
+                    
                 </Modal>
             )}
         </div>
