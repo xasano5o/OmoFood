@@ -278,11 +278,12 @@ const Basket = () => {
                     <span>Mahsulotning umimiy narxi</span>
                     <span className="flex items-center text-xl flex-wrap ">
                       <p className="mb-1 text-lg font-bold">
-                        {dataBasket?.total_price?.discount_price?.toLocaleString("uz-UZ")} so'm
+                        {dataBasket?.total_price.price?.toLocaleString("uz-UZ")} so'm
                       </p>
                       <div className="w-4"></div>
                       <del>
-                        {dataBasket?.total_price.price?.toLocaleString("uz-UZ")} so'm
+                      {dataBasket?.total_price?.discount_price?.toLocaleString("uz-UZ")} so'm
+                    
                       </del>
                     </span>
                   </div>

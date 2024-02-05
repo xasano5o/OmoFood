@@ -35,7 +35,6 @@ const BasketCheckout = ({ selectProduct }) => {
     // Append other form fields
     formData.append("user.first_name", inputValue.first_name);
 
-    console.log(inputValue?.last_name);
     if (inputValue?.last_name?.length) {
       formData.append("user.last_name", inputValue.last_name);
     }
