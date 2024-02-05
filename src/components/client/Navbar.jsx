@@ -113,8 +113,8 @@ const Navbar = () => {
               </form>
             </div>
             {skip && (
-              <div className="  bg-red-400 transition duration-150 ease-out md:ease-in absolute -z-50 left-0  w-[100%] h-[100vh]">
-                <div className="  z-20 bg-white  pt-12  px-6 rounded shadow-lg flex flex-col w-[100%] h-screen overflow-x-auto sx:overflow-y-auto sx:h-[30vh]">
+              <div className="  bg-red-400 transition duration-150 ease-out md:ease-in absolute z-50 left-0  w-[100%] h-[100vh]">
+                <div className="  z-100 bg-white  pt-12  px-6 rounded shadow-lg flex flex-col w-[100%] h-screen overflow-x-auto sx:overflow-y-auto sx:h-[30vh]">
                   {data?.result?.categories?.map((value) => {
                     return (
                       <div>
