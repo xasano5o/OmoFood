@@ -122,7 +122,7 @@ function Product() {
       <>
         <div className="row d-flex justify-content-center w-full">
           <div className="col-md-12">
-            <NavLink className="text-decoration-none text-dark" to={`/`}>
+            <NavLink className="text-decoration-none text-dark" to={`/home`}>
               <div className="d-flex align-items-center m-3">
                 <i className="fa fa-long-arrow-left"></i>
                 <span className="ml-1">&nbsp;Back</span>
