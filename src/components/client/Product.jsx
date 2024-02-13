@@ -143,15 +143,15 @@ function Product() {
                         <img
                           src={product?.image}
                           alt={product?.title}
-                          className="object-contain w-full h-fit"
+                          className="object-contain w-full"
                         />
                       </div>
                       {product.images.map((item, index) => (
-                        <div key={index} className="h-fit">
+                        <div key={index} className="h-[480px]">
                           <img
                             src={item?.image}
                             alt={`${index}`}
-                            className="object-contain w-full h-fit"
+                            className="object-contain w-full"
                           />
                         </div>
                       ))}

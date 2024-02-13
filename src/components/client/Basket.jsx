@@ -10,6 +10,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Basket = () => {
+
   const { data: dataBasket, isSuccess, refetch: refetchData } = useGetBasketQuery();
   const [deleteBasket] = useDeleteBasketMutation();
   const [Increment] = useIncrementMutation();
@@ -18,12 +19,7 @@ const Basket = () => {
   const [user, setUser] = useState()
   const [selectTotal, setSelectTotal] = useState(1);
   const [totalAmount, settotalAmount] = useState(0);
-  // const { data, refetch } = useGetSelectAllQuery({ isAllSelected })
 
-  // const { data: dataUser, refetch: refetchUser } = useGetSelectUserQuery({
-  //   skip,
-  //   userId: user?.id,
-  // });
 
 
   const deleteFunc = async (id) => {
