@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useGetBasketQuery } from "../../redux/slice/client/basket";
 import Logo from "../../assest/photo1705589004.jpeg"
 import { FaChevronLeft } from "react-icons/fa6";
@@ -11,7 +11,7 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
   const { data: dataBasket } = useGetBasketQuery();
   const [data, setData] = useState([]);
-
+  const navigate = useNavigate()
   // Debounce function
   const token = localStorage.getItem("user");
   useEffect(() => {
@@ -51,6 +51,9 @@ const Navbar = () => {
     setSkip(false);
     setSearch("");
   };
+  const minusPage = () => {
+    navigate(-1)
+  }
   return (
     <div className="bot">
       <nav className="navbar bg-light flex flex-col gap-1  shadow">
@@ -61,7 +64,7 @@ const Navbar = () => {
             <img className="logo  w-[70px] rounded-full" src={Logo} alt="" />
           </NavLink>
           <DeskModal />
-          <NavLink to={'/'}>
+          <NavLink onClick={() => minusPage()}>
             <FaChevronLeft />
           </NavLink>
 
