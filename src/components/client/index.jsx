@@ -29,15 +29,14 @@ export default function HomeIndex() {
                         ))}
                     </Carousel>
                     <div className="p-6 bg-white flex-auto">
-                    
-                    <NavLink className={'texts'} to={'/home'}>
-                        <div className="flex gap-2   items-center justify-center border rounded transition duration-300 no-underline hover:bg-gray-100">
-                          <br /> 
-                                <h1 className=" text-2xl font-bold mb-4 cursor-pointer">Barcha Mahsulotlarni Umumiy Ko'rish</h1>
-                        </div>
-                            </NavLink>
-  <br />
-                        <div className="grid grid-cols-2 gap-4">
+
+                        <NavLink className={'texts'} to={'/home'}>
+                            <div className="flex gap-2 pt-2   items-center justify-center border rounded transition duration-300 no-underline hover:bg-gray-100">
+                                <h1 className="text-base md:text-2xl font-bold mb-4 cursor-pointer">Barcha Mahsulotlarni Umumiy Ko'rish</h1>
+                            </div>
+                        </NavLink>
+                        <br />
+                        <div className="grid grid-cols-1 md:grid md:grid-cols-2 gap-4">
                             {data?.map((item) => (
                                 <Link
                                     className="flex items-center gap-2 p-2 border rounded transition duration-300 no-underline hover:bg-gray-100"

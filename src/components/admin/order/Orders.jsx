@@ -6,18 +6,26 @@ import DeleteOrder from "./OrderDelete.jsx";
 import OrderLocation from "./OrderLocation.jsx";
 import OrderUpdate from "./OrderUpdate.jsx";
 import OrderWiew from "./OrderWiew.jsx";
+import { useCreateUserMutation } from "../../../redux/slice/client/user/index.js";
 
 const OrderCrud = () => {
   const { data, error, isLoading } = useGetOrderQuery();
+  const [check, setCheck] = useState(true);
+  const { data: checked } = useCreateUserMutation()
+  console.log(checked, "null");
   const [search, setSearch] = useState("");
   const [isHovered, setIsHovered] = useState(false);
 
   const filteredData = data
-  ? data?.filter((item) =>
+    ? data?.filter((item) =>
       item?.user?.first_name && item?.user?.first_name?.toLowerCase()?.includes(search.toLowerCase())
     )
-  : [];
+    : [];
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Checkbox value:", check);
+  };
   return (
     <div className=" ">
       <section className="bg-gray-50 dark:bg-white-900 p-3 sm:p-5 antialiased">
@@ -77,25 +85,32 @@ const OrderCrud = () => {
                           className="border-b dark:border-gray-600 hover:bg-gray-100  dark:hover:bg-white-700"
                           key={item.id}
                         >
+                          <div className="flex items-center">
+                            <td className="px-4 py-3">
+                              <span
+                                className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                              >
+                                {item?.user?.first_name}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3">
+                              <span
+                                className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
+                              >
+                                {item?.user?.last_name}
+                              </span>
+                            </td>
+                            <input
+                              type="checkbox"
+                              onChange={(e) => setCheck(e.target.checked)}
+                              name="salom"
+                            />
+                          </div>
                           <td className="px-4 py-3">
                             <span
                               className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
                             >
-                              {item?.user?.first_name}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span
-                              className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
-                            >
-                              {item?.user?.last_name}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span
-                              className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
-                            >
-                              {item?.user?.phone} 
+                              {item?.user?.phone}
                             </span>
                           </td>
                           <td className="px-4 py-3">
@@ -109,13 +124,13 @@ const OrderCrud = () => {
                             <span
                               className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
                             >
-                              {item?.delivery_status} 
+                              {item?.delivery_status}
                             </span>
                           </td>
 
                           <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <div className="flex items-center space-x-4">
-                            <div>
+                              <div>
                                 <OrderWiew items={item} />
                               </div>
                               <div>
