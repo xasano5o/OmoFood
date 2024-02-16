@@ -1,11 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useGetBasketQuery } from '../../redux/slice/client/basket';
 import Modal from './Modal';
 import Logo from "../../assest/photo1705589004.jpeg"
 import { TiShoppingCart } from "react-icons/ti";
+import { FaChevronLeft } from 'react-icons/fa6';
 const NavbarMobile = () => {
   const { data: dataBasket } = useGetBasketQuery();
+  const navigate = useNavigate()
+
+  const minusPage = () => {
+    navigate(-1)
+  }
   return (
     <div className='nav-mobile'>
       <div className="bg-green-600 h-12 w-full fixed bottom-0 left-0 z-50">
@@ -17,6 +23,9 @@ const NavbarMobile = () => {
             </h1> */}
             <img className='w-[40px] rounded-full' src={Logo} alt="" />
           </Link>
+          <NavLink className={"md:hidden block "} onClick={() => minusPage()}>
+            <FaChevronLeft className='text-2xl mt-3' />
+          </NavLink>
             <Link
               to={"/basket"}
               className="no-underline text-2xl flex gap-2 justify-center  items-center "

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.320e820d.css",
-    "main.js": "/static/js/main.5ded1972.js",
+    "main.css": "/static/css/main.bfcadd0a.css",
+    "main.js": "/static/js/main.e1d7152c.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/photo1705589004.jpeg": "/static/media/photo1705589004.fcd565e20b8eb090e248.jpeg",
     "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
@@ -21,11 +21,11 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.320e820d.css.map": "/static/css/main.320e820d.css.map",
-    "main.5ded1972.js.map": "/static/js/main.5ded1972.js.map"
+    "main.bfcadd0a.css.map": "/static/css/main.bfcadd0a.css.map",
+    "main.e1d7152c.js.map": "/static/js/main.e1d7152c.js.map"
   },
   "entrypoints": [
-    "static/css/main.320e820d.css",
-    "static/js/main.5ded1972.js"
+    "static/css/main.bfcadd0a.css",
+    "static/js/main.e1d7152c.js"
   ]
 }

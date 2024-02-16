@@ -40,7 +40,7 @@ export default function HomeIndex() {
                             {data?.map((item) => (
                                 <Link
                                     className="flex items-center gap-2 p-2 border rounded transition duration-300 no-underline hover:bg-gray-100"
-                                    to={`/categories/${item.id}`}
+                                     to={`/categories/${item.id}`}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         navigate(`/categories/${item.id}`);
