@@ -100,3 +100,7 @@ body {
     border: 2px solid black !important;
     background: red;
 }
+
+@media screen  and (max-width:768px)  {
+    
+}
