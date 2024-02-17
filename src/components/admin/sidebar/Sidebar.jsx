@@ -8,6 +8,7 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SlNote } from "react-icons/sl";
 import { BiCategoryAlt } from "react-icons/bi";
+import { GoBlocked } from "react-icons/go";
 const Home = () => {
   const navigate = useNavigate();
   const path_name=useLocation();
@@ -22,6 +23,8 @@ const Home = () => {
     { name: "Kichik Turkum", link: "/subcategories", icon: BiCategoryAlt, margin: true },
     { name: "Yetkazib berish", link: "/deliveries", icon: PiTaxi },
     { name: "Yon daftarcha", link: "/note", icon: TbReportAnalytics },
+    { name: "Qora Ro'yhat", link: "/blocked", icon: GoBlocked },
+
   ];
 
   const [open, setOpen] = useState(true);

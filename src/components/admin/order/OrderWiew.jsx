@@ -3,13 +3,10 @@ import { AiOutlineEye } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useDeleteProductImgMutation } from "../../../redux/slice/client/getProduct";
 import Modal from "../../generic/Modal";
-import EmptyBox from "../../EmptyBox/EmptyBox";
-import Loader from "../../Loader/Loader";
 
 export default function OrderWiew({ items }) {
 
     const [isOpen, setIsOpen] = useState(false);
-    const closeModal = () => setIsOpen(!isOpen);
     const [deleteProduct, { isLoading }] = useDeleteProductImgMutation();
     const [search, setSearch] = useState("");
 

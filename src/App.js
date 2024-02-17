@@ -55,6 +55,8 @@ function App() {
               <Route path="/admin/products" element={<ProductCrud />} />
               <Route path="/admin/deliveries" element={<Deliveries />} />
               <Route path="/admin/note" element={<NoteTable />} />
+              <Route path="/admin/blocked" element={<NoteTable />} />
+
             </Route>
           ) : null
           // <Route path="/admin/*" element={<Login />} />

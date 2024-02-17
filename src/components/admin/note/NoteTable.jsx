@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NoProduct from "../../../assest/icon/Без названия.png";
 import { useGetNoteQuery } from "../../../redux/slice/client/note/index.js";
 import EmptyBox from "../../EmptyBox/EmptyBox.jsx";
@@ -11,12 +11,24 @@ import ViewNote from "./ViewNote.jsx";
 const NoteTable = () => {
   const { data, error, isLoading } = useGetNoteQuery();
   const [search, setSearch] = useState("");
-  // const filteredData = data
-  // ? data?.filter((item) =>
-  //     item.title?.toLowerCase().includes(search.toLowerCase())
-  //   )
-  // : [];
-  // console.log(filteredData,'filteredData');
+  const [totalAmount, setTotalAmount] = useState(0);
+
+
+
+
+  useEffect(() => {
+    // Delay execution by 1 or 2 seconds
+    const timer = setTimeout(() => {
+      if (Array.isArray(data)) {
+        const total = data.reduce((a, b) => a + (b?.amount || 0), 0);
+        setTotalAmount(total);
+      }
+    }, 0); // 1000 milliseconds = 1 second
+
+    // Cleanup the timer
+    return () => clearTimeout(timer);
+  }, [data]); // Depend on filteredTeachers to recalculate when it changes
+
   return (
     <div className=" ">
 
@@ -33,6 +45,8 @@ const NoteTable = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+
+              {totalAmount.toLocaleString('uz-UZ')} so'm
               <AddNote />
             </div>
             <br />
@@ -43,15 +57,15 @@ const NoteTable = () => {
                     <th scope="col" className="p-4">
                       Maxsulot narxi
                     </th>
-       
+
                     <th scope="col" className="p-4">
                       Maxsulot haqida komment
                     </th>
                     <th scope="col" className="p-4">
                       Maxsulot nomi
                     </th>
-                    <th scope="col" className="p-4">Maxsulot qo'shilgan narxi</th> 
-                    <th scope="col" className="p-4"></th> 
+                    <th scope="col" className="p-4">Maxsulot qo'shilgan narxi</th>
+                    <th scope="col" className="p-4"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -73,19 +87,14 @@ const NoteTable = () => {
                           className="border-b dark:border-gray-600 hover:bg-gray-100  dark:hover:bg-white-700"
                           key={item?.id}
                         >
-                         
-                          {/* <td className="px-4 py-3">
-                            <span className="text-gray-800  text-base font-medium px-2 py-0.5 rounded">
-                              {item?.category?.title}
-                            </span>
-                          </td> */}
+
                           <td className="px-4 py-3">
                             <span
                               className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
                             >
                               {item?.price} So'm
                             </span>
-                          </td>     
+                          </td>
                           <td className="px-4 py-3">
                             <span
                               className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
@@ -100,7 +109,7 @@ const NoteTable = () => {
                               {item?.product?.title}
                             </span>
                           </td>
-                          
+
                           <td className="px-4 py-3">
                             <span
                               className={`text-gray-800  text-base font-medium px-2 py-0.5 rounded`}
@@ -110,7 +119,7 @@ const NoteTable = () => {
                           </td>
                           <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <div className="flex items-center space-x-4">
-                              <ViewNote object={item} formattedDate={formattedDate}/>
+                              <ViewNote object={item} formattedDate={formattedDate} />
                               <EditNote object={item} />
                               {/* <DeleteNote ID={item.id} /> */}
                             </div>
