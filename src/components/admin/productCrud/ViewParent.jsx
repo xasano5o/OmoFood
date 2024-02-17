@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useDeleteProductImgMutation } from "../../../redux/slice/client/getProduct";
 import Modal from "../../generic/Modal";
 
-export default function View({formattedDate,object}) {
+export default function View({ formattedDate, object }) {
   const [isOpen, setIsOpen] = useState(false);
   const [deletingImage, setDeletingImage] = useState(null);
   const closeModal = () => setIsOpen(!isOpen);
@@ -42,10 +42,19 @@ export default function View({formattedDate,object}) {
             <div className="flex flex-wrap w-full h-full md:items-stretch md:flex-row sm:flex-col sm:items-center sx:flex-col">
               <div className="md:w-[50%] sm:w-full sx:w-full p-2 h-full">
                 <div className="grid grid-cols-2 h-[32vh] overflow-y-auto bg-white rounded-lg gap-2 shadow-lg border p-4">
+
+                  <div
+                    className="containers object-contain"
+                    key={object?.id}
+                  >
+                    <img
+                      className="image shadow border w-[300px] h-[150px] object-cover border-black"
+                      src={object?.image}
+                      alt="product_image"
+                    />
+                  </div>
                   {object?.images?.length > 0 ? (
                     object?.images?.map((value) => {
-            
-      
                       return (
                         <div
                           className="containers object-contain"
@@ -60,7 +69,7 @@ export default function View({formattedDate,object}) {
                               type="button"
                               className="text inline-flex items-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                              <BsTrash className="" aria-hidden="true" />
+                              <BsTrash aria-hidden="true" />
                             </button>
                           </div>
                           <img
@@ -73,6 +82,7 @@ export default function View({formattedDate,object}) {
                     })
                   ) : (
                     <p className="text-gray-800">Maxsulot Rasmlari yuq</p>
+
                   )}
                 </div>
               </div>
@@ -89,9 +99,9 @@ export default function View({formattedDate,object}) {
                   <p>
                     <strong>Narxi:</strong> {object?.price}
                   </p>
-                    <p>
-                      <strong>Qo'shilgan Vaqti:</strong>{formattedDate}
-                    </p>
+                  <p>
+                    <strong>Qo'shilgan Vaqti:</strong>{formattedDate}
+                  </p>
                   <p>
                     <strong>Miqdori:</strong> {object?.amount}
                   </p>

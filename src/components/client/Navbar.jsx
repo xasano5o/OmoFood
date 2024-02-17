@@ -62,7 +62,7 @@ const Navbar = () => {
             <img className="logo  w-[70px] rounded-full" src={Logo} alt="" />
           </NavLink>
           <DeskModal />
-          <NavLink onClick={() => minusPage()}>
+          <NavLink className={"md:block hidden"} onClick={() => minusPage()}>
             <FaChevronLeft />
           </NavLink>
           <div className="logo flex gap-3 items-center">

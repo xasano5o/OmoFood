@@ -23,14 +23,14 @@ export default function DeskModal() {
                     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-auto">
                         <div className="border rounded-lg shadow-lg relative flex flex-col w-full h-full bg-white outline-none focus:outline-none">
                             <div className="flex items-center justify-end">
-                                
+
                             </div>
                             <div className="p-6 flex-auto">
-                                
-                            <div className="flex justify-between">
-                              <h1 className="text-2xl font-bold mb-4">Turkumlar</h1>
-                                <button className="text-2xl font-bold mb-4 text-red-800" onClick={() => setShowModal(false)} >X</button>
-                              </div>
+
+                                <div className="flex justify-between">
+                                    <h1 className="text-2xl font-bold mb-4">Turkumlar</h1>
+                                    <button className="text-2xl font-bold mb-4 text-red-800" onClick={() => setShowModal(false)} >X</button>
+                                </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     {data?.map((item) => (
                                         <Link

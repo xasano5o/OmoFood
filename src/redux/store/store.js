@@ -13,6 +13,7 @@ import { SearchData } from "../slice/client/search/index.js";
 import {NoteCrud} from "../slice/client/note/index.js"
 import {GetSellct} from "../slice/client/basket/select.js"
 import { Stats } from "../slice/client/stats/Stats.jsx";
+import { User } from "../slice/client/user/index.js";
 
 export const store = configureStore({
     reducer: {
@@ -29,6 +30,7 @@ export const store = configureStore({
         [GetSellct.reducerPath]:GetSellct.reducer,
         [NoteCrud.reducerPath]:NoteCrud.reducer,
         [Stats.reducerPath]:Stats.reducer,
+        [User.reducerPath]:User.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
@@ -45,6 +47,7 @@ export const store = configureStore({
             GetSellct.middleware,
             NoteCrud.middleware,
             Stats.middleware,
+            User.middleware,
         ),
 });
 

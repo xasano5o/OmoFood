@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ImFire } from "react-icons/im";
 import {
@@ -6,11 +7,8 @@ import {
   useIncrementMutation,
 } from "../../redux/slice/client/basket";
 import BasketCheckout from "./BasktChecout";
-import axios from "axios";
-import { Link } from "react-router-dom";
 
 const Basket = () => {
-
   const { data: dataBasket, isSuccess, refetch: refetchData } = useGetBasketQuery();
   const [deleteBasket] = useDeleteBasketMutation();
   const [Increment] = useIncrementMutation();
@@ -19,8 +17,6 @@ const Basket = () => {
   const [user, setUser] = useState()
   const [selectTotal, setSelectTotal] = useState(1);
   const [totalAmount, settotalAmount] = useState(0);
-
-
 
   const deleteFunc = async (id) => {
     try {
@@ -122,12 +118,10 @@ const Basket = () => {
     } else {
       setSelectedUsers((prevSelectedUsers) => [...prevSelectedUsers, user.id]);
     }
-    // Update isAllSelected based on whether all users are selected
     setIsAllSelected(selectedUsers.length === dataBasket?.items?.length);
 
   };
   const isUserSelected = (user) => {
-    // setUser(user?.id )
     return selectedUsers?.includes(user.id);
   };
 
@@ -274,11 +268,12 @@ const Basket = () => {
                       </p>
                       <div className="w-4"></div>
                       <del>
-                      {dataBasket?.total_price?.discount_price?.toLocaleString("uz-UZ")} so'm
-                    
+                        {dataBasket?.total_price?.discount_price?.toLocaleString("uz-UZ")} so'm
+
                       </del>
                     </span>
                   </div>
+
                   <BasketCheckout selectProduct={selectedUsers} />
 
                 </div>
@@ -286,7 +281,6 @@ const Basket = () => {
             </div>
           </div>
         </section>
-
       </div>
     </div>
   );
